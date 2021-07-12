@@ -11,7 +11,7 @@ st.sidebar.subheader("Visualization Settings")
 
 #File upload
 file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
-st.write("Please upload file to the application.")
+
 global df
 if file is not None:
     print(file)
