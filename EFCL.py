@@ -22,7 +22,6 @@ if file is not None:
         print(e)
         df= pd.read_excel(file)
 try:
-
     st.write(df)
 except Exception as e:
     print(e)
