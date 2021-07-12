@@ -12,6 +12,7 @@ st.sidebar.subheader("Visualization Settings")
 #File upload
 file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
 
+'''
 global df
 if file is not None:
     print(file)
@@ -26,3 +27,4 @@ try:
 except Exception as e:
     print(e)
     str.write("Please upload file to the application.")
+'''
