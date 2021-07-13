@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-
+@st.cache
 def file():
 
     #title
@@ -29,7 +29,7 @@ def file():
     try:
         Community= df['Community League'].drop_duplicates()
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-        Program = df["Program","Delivery"].loc[df["Community League"]== ComChoice]
+        Program = df["Program"].loc[df["Community League"]== ComChoice]
         st.table(Program)
     except Exception as e:
         print(e)
