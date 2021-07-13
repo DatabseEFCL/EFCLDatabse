@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 
 def file():
 
@@ -25,15 +26,24 @@ def file():
             print(e)
             df= pd.read_excel(file)
     try:
-        filters(df)
+        filters()
     except Exception as e:
         print(e)
         st.write("Please upload file to the application.")
 
-def filters(df):
-    Community= df['Community League'].drop_duplicates()
-    ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-    Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
-    st.dataframe(Program)
+
+@st.cache
+def filters():
+
+    csv= pd.read_csv(file)
+    excel= pd.read_excel(file)
+
+    if file is csv or excel:
+        st.write("hello")
+        Community= df['Community League'].drop_duplicates()
+        ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
+        Program = df["Program"].loc[df["Community League"]== ComChoice]
+        st.table(Program)
+
 if __name__=="__main__":
     file()
