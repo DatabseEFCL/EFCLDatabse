@@ -28,8 +28,16 @@ except Exception as e:
     print(e)
     st.write("Please upload file to the application.")
 
+@st.cache
+def main(df):
+    path = df
+    return path
+    df = main()
 
-ComL= df['Community League']. drop_duplicates()
-ComChoice= st.sidebar.selectbox('Select your Community League: ', ComL)
-Prog= df["Program"].loc[df["Community League"]== ComChoice]
-ProgChoice= st.sidebar.selectbox('Select your Program', Prog)
+    ComL= df['Community League']. drop_duplicates()
+    ComChoice= st.sidebar.selectbox('Select your Community League: ', ComL)
+    Prog= df["Program"].loc[df["Community League"]== ComChoice]
+    ProgChoice= st.sidebar.selectbox('Select your Program', Prog)
+
+if __name__ == "__main__":
+    main()
