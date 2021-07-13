@@ -28,9 +28,8 @@ if file is not None:
             
         except Exception as e: 
             print(e)            
-else:
-    st.write(file)   
-    filter(file)
+st.write(file)   
+
 
 @st.cache
 def filter(file):
