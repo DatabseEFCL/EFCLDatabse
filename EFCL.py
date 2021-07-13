@@ -1,19 +1,11 @@
 import streamlit as st
 import pandas as pd
 
-def file():
-
-    #title
-    st.title(""" EFCL CLOG Database """)
-
-    #Sidebar
-    st.sidebar.subheader("Visualization Settings")
-
-    #File upload
-    file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
-
-    return file      
-    #checking which file is uploaded 
+def file(df):
+    Community= df['Community League'].drop_duplicates()
+    ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
+    Program= df["Program"].loc[df["Community League"]== ComChoice]
+    st.write(Program)
 
 def check():
     #title
@@ -36,15 +28,9 @@ def check():
         except Exception as e:
             print(e)
             df= pd.read_excel(file)
-    try:
-        Community= df['Community League'].drop_duplicates()
-        ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-        Program= df["Program"].loc[df["Community League"]== ComChoice]
-        st.write(Program)
-    except Exception as e:
-        print(e)
-        st.write("Please upload file to the application.")
+    return df
 
 if __name__=="__main__":
   
     check()
+    file(df)
