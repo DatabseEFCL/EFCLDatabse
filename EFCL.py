@@ -13,23 +13,26 @@ file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['
 
         
 #checking which file is uploaded 
-global df
+def file_upload():
+        
+    global df
 
-if file is not None:
-    print(file)
-    try: 
-        df = pd.read_csv(file)
+    if file is not None:
+        print(file)
+        try: 
+            df = pd.read_csv(file)
+        except Exception as e:
+            print(e)
+            df= pd.read_excel(file)
+    try:
+        st.write(df)
     except Exception as e:
         print(e)
-        df= pd.read_excel(file)
-try:
-    st.write(df)
-except Exception as e:
-    print(e)
-    st.write("Please upload file to the application.")
-
+        st.write("Please upload file to the application.")
+    return df
 @st.cache
 def main(df):
+
     path = df
     return path
     df = main()
