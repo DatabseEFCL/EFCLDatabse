@@ -1,37 +1,40 @@
-
 import streamlit as st
 import pandas as pd
-import numpy as np
-from streamlit.caching import cache
 
+def file():
 
+    #title
+    st.title(""" EFCL CLOG Database """)
 
+    #Sidebar
+    st.sidebar.subheader("Visualization Settings")
 
+    #File upload
+    file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
 
-#title
-st.title(""" EFCL CLOG Database """)
-st.text("Please upload file to the application.")
+    return file      
+    #checking which file is uploaded 
 
+def check():
 
-#Sidebar
-st.sidebar.subheader("Visualization Settings")
+    global df
 
-#file upload
-file= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
-
-global df 
-
-if file is not None:
+    if file is not None:
+        print(file)
         try: 
             df = pd.read_csv(file)
-            st.markdown('Your csv file has been uploaded !')
             
-        except Exception as e: 
-            print(e)            
-st.table(file)   
+        except Exception as e:
+            print(e)
+            df= pd.read_excel(file)
+    try:
+        Community= df['Community League'].drop_duplicates()
+        ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
+        Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
+        st.write(Program)
+    except Exception as e:
+        print(e)
+        st.write("Please upload file to the application.")
 
-
-@st.cache
-def filter(file):
-
-    st.write(file)
+if __name__=="__main__":
+    check()
