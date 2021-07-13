@@ -2,12 +2,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from streamlit.caching import cache
 
 
-
-
-
-    
 
 
 
@@ -28,8 +25,13 @@ if file is not None:
         try: 
             df = pd.read_csv(file)
             st.markdown('Your csv file has been uploaded !')
-
+            
         except Exception as e: 
-            print(e)
-st.write("hello")
+            print(e)            
+else:
+    filter(file)
 
+@st.cache
+def filter(file):
+
+    st.write(file)
