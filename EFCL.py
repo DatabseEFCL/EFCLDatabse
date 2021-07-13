@@ -31,15 +31,5 @@ if file is not None:
 
         except Exception as e: 
             print(e)
-
-df = pd.read_csv(file)
-Com = df['Community League'].drop_duplicates()
-Com_choice = st.sidebar.selectbox('Select your Community League:', Com)
-Program = df["Program"].loc[df["Community League"] == Com_choice]
-Prog_choice = st.sidebar.selectbox('Select your Program:', Program)
-Delivery = df["Delivery"].loc[df["Program"] == Prog_choice]
-while Program == True:
-    st.table(Program) 
-while Delivery == True:
-    st.table(Delivery)       
+st.write("hello")
 
