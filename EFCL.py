@@ -15,8 +15,17 @@ def file():
     return file      
     #checking which file is uploaded 
 
-def check(file):
+def check():
+    #title
+    st.title(""" EFCL CLOG Database """)
 
+    #Sidebar
+    st.sidebar.subheader("Visualization Settings")
+
+    #File upload
+    file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
+
+    #checking which file is uploaded 
     global df
 
     if file is not None:
@@ -37,5 +46,5 @@ def check(file):
         st.write("Please upload file to the application.")
 
 if __name__=="__main__":
-    file()
-    check(file)
+  
+    check()
