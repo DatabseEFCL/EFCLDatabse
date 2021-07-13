@@ -32,9 +32,10 @@ def check(file):
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
         Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
         st.write(Program)
-        
     except Exception as e:
         print(e)
         st.write("Please upload file to the application.")
-    return df
 
+if __name__=="__main__":
+    file()
+    check(file)
