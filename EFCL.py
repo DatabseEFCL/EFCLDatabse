@@ -28,7 +28,7 @@ if file is not None:
             
         except Exception as e: 
             print(e)            
-st.write(file)   
+st.table(file)   
 
 
 @st.cache
