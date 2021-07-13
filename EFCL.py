@@ -8,6 +8,7 @@ def file(file):
     Program= df["Program"].loc[df["Community League"]== ComChoice]
     st.write(Program)
 
+@st.cache(suppress_st_warning=True)
 def check():
     #title
     st.title(""" EFCL CLOG Database """)
