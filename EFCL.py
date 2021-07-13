@@ -40,4 +40,4 @@ def main(df):
     ProgChoice= st.sidebar.selectbox('Select your Program', Prog)
 
 if __name__ == "__main__":
-    main()
+    main(df)
