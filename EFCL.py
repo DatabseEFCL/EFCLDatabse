@@ -30,7 +30,8 @@ def file():
         Community= df['Community League'].drop_duplicates()
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
         Program = df["Program"].loc[df["Community League"]== ComChoice]
-        st.table(Program)
+        Delivery = df["Delivery"].loc[df["Community League"]== Program]
+        st.table(Program,Delivery)
     except Exception as e:
         print(e)
         st.write("Please upload file to the application.")
