@@ -25,12 +25,12 @@ def file():
             print(e)
             df= pd.read_excel(file)
     try:
-        filters()
+        filters(df)
     except Exception as e:
         print(e)
         st.write("Please upload file to the application.")
 
-def filters():
+def filters(df):
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
