@@ -8,7 +8,6 @@ def file(file):
     Program= df["Program"].loc[df["Community League"]== ComChoice]
     st.write(Program)
 
-@st.cache(suppress_st_warning=True)
 def check():
     #title
     st.title(""" EFCL CLOG Database """)
@@ -31,7 +30,7 @@ def check():
             print(e)
             df= pd.read_excel(file)
 
-
+    df= pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League"]== ComChoice]
