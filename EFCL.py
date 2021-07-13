@@ -35,10 +35,7 @@ def file():
 @st.cache
 def filters():
 
-    csv= pd.read_csv(file)
-    excel= pd.read_excel(file)
-
-    if file is csv or excel:
+   
         Community= df['Community League'].drop_duplicates()
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
         Program = df["Program"].loc[df["Community League"]== ComChoice]
