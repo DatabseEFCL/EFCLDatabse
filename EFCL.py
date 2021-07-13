@@ -12,10 +12,7 @@ def file():
     #File upload
     file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
 
-    return file      
-    #checking which file is uploaded 
-
-def check(file):
+   
 
     global df
 
@@ -38,4 +35,3 @@ def check(file):
 
 if __name__=="__main__":
     file()
-    check(file)
