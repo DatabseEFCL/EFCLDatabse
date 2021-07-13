@@ -21,13 +21,9 @@ def check():
     #checking which file is uploaded 
 
     if file is not None:
-        print(file)
-        try: 
-            df = pd.read_csv(file)
-            
-        except Exception as e:
-            print(e)
-            df= pd.read_excel(file)
+        file.seek(0)
+        data = pd.read_csv(file, low_memory=False)
+        st.write(data.shape)
 
     df= pd.read_csv(file, delim_whitespace=True)
 
