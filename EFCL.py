@@ -21,9 +21,13 @@ def check():
     #checking which file is uploaded 
 
     if file is not None:
-        file.seek(0)
-        data = pd.read_csv(file, low_memory=False)
-        st.write(data.shape)
+        print(file)
+        try: 
+            df = pd.read_csv(file)
+            
+        except Exception as e:
+            print(e)
+            df= pd.read_excel(file)
 
     df= pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
