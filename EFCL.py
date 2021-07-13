@@ -23,10 +23,12 @@ def file():
         print(file)
         try: 
             df = pd.read_csv(file)
-            
+            st.markdown('Your csv file has been uploaded !')
         except Exception as e: 
             print(e)
             df= pd.read_excel(file)
+            st.markdown('Your excel file has been uploaded !')
+
     
         
 
