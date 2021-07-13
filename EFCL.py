@@ -19,6 +19,7 @@ def check():
     file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
 
     #checking which file is uploaded 
+
     if file is not None:
         print(file)
         try: 
@@ -28,7 +29,8 @@ def check():
             print(e)
             df= pd.read_excel(file)
 
-    df= pd.read_csv(file)
+    df= pd.read_csv(file, delim_whitespace=True)
+
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League"]== ComChoice]
