@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-def file(df):
+def file(file):
     df = pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
@@ -30,11 +30,11 @@ def check():
             print(e)
             df= pd.read_excel(file)
 
-    df = pd.read_csv(file)
+ 
    
-    return df
+    return file
 
 if __name__=="__main__":
   
     check()
-    file(df)
+    file(file)
