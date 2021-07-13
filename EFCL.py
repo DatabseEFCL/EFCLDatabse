@@ -32,9 +32,13 @@ def check():
 
  
    
-    return file
+    df = pd.read_csv(file)
+    Community= df['Community League'].drop_duplicates()
+    ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
+    Program= df["Program"].loc[df["Community League"]== ComChoice]
+    st.write(Program)
 
 if __name__=="__main__":
   
     check()
-    file(file)
+   
