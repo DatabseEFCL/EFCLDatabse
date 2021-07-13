@@ -25,7 +25,7 @@ def file():
         except Exception as e: 
             print(e)
             df= pd.read_excel(file)
-    try:
+    While df:
         Community= df['Community League'].drop_duplicates()
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
         Program = df["Program"].loc[df["Community League"]== ComChoice]
