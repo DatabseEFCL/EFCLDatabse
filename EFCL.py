@@ -15,7 +15,7 @@ def file():
     return file      
     #checking which file is uploaded 
 
-def check():
+def check(file):
 
     global df
 
@@ -37,4 +37,5 @@ def check():
         st.write("Please upload file to the application.")
 
 if __name__=="__main__":
-    check()
+    file()
+    check(file)
