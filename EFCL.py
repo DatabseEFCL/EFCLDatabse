@@ -34,6 +34,6 @@ def filters(df):
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
-    st.write(Program)
+    st.dataframe(Program)
 if __name__=="__main__":
     file()
