@@ -30,7 +30,7 @@ def check():
     try:
         Community= df['Community League'].drop_duplicates()
         ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-        Program= df["Program"].loc[df["Community League","Delivery"]== ComChoice]
+        Program= df["Program"].loc[df["Community League"]== ComChoice]
         st.write(Program)
     except Exception as e:
         print(e)
