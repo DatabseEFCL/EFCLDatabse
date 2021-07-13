@@ -19,8 +19,6 @@ def check():
     file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
 
     #checking which file is uploaded 
-    global df
-
     if file is not None:
         print(file)
         try: 
