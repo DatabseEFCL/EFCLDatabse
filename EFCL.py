@@ -25,8 +25,7 @@ def check():
         data = pd.read_csv(file, low_memory=False)
         st.write(data.shape)
 
-    df= pd.read_csv(file, delim_whitespace=True)
-
+    df= pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League"]== ComChoice]
