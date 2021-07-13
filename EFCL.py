@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 def file(df):
+    df = pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League"]== ComChoice]
