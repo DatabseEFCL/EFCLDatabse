@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+
+@st.cache(suppress_st_warning=True)
 def file(file):
     df = pd.read_csv(file)
     Community= df['Community League'].drop_duplicates()
