@@ -28,6 +28,9 @@ def check():
         except Exception as e:
             print(e)
             df= pd.read_excel(file)
+
+    df = pd.read_csv(file)
+   
     return df
 
 if __name__=="__main__":
