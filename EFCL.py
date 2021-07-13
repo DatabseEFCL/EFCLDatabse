@@ -6,6 +6,8 @@ def file():
 
     #title
     st.title(""" EFCL CLOG Database """)
+    st.write("Please upload file to the application.")
+
 
     #Sidebar
     st.sidebar.subheader("Visualization Settings")
@@ -25,13 +27,8 @@ def file():
         except Exception as e: 
             print(e)
             df= pd.read_excel(file)
-    while True:
-        Community= df['Community League'].drop_duplicates()
-        ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-        Program = df["Program"].loc[df["Community League"]== ComChoice]
-        st.table(Program)
     
-
+        
 
 
 if __name__=="__main__":
