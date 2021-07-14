@@ -2,37 +2,34 @@ import streamlit as st
 import pandas as pd
 
 
-@st.cache(suppress_st_warning=True)
-def file(file):
-    df = pd.read_csv(file)
+
+@st.cache(allow_output_mutation=True)
+def loadData(file):
+    global df
+    df = pd.read_csv(file, encoding='utf-8', nrows=1552)
+    df.columns = ['Community League', 'Program', 'Delivery']
+
     Community= df['Community League'].drop_duplicates()
     ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
     Program= df["Program"].loc[df["Community League"]== ComChoice]
     st.write(Program)
+    return df
 
-def check():
-    #title
+
+
+if __name__=="__main__":
+     #title
     st.title(""" EFCL CLOG Database """)
 
     #Sidebar
     st.sidebar.subheader("Visualization Settings")
 
     #File upload
-    file= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv', 'xlsx'])
+    file_uploaded= st.sidebar.file_uploader(label= "Upload your csv or excel file.", type= ['csv'], key ='file_uploader')
 
-    #checking which file is uploaded 
+    if file_uploaded is not None:
+        df= loadData(file_uploaded)
 
-   
 
- 
-   
-    df = pd.read_csv(file)
-    Community= df['Community League'].drop_duplicates()
-    ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-    Program= df["Program"].loc[df["Community League"]== ComChoice]
-    st.write(Program)
 
-if __name__=="__main__":
-  
-    check()
    
