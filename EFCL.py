@@ -27,10 +27,7 @@ global df
 if file_uploaded is not None:
     df= loadData(file_uploaded)
 
-Community= df['Community League'].drop_duplicates()
-ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
-Program= df["Program"].loc[df["Community League"]== ComChoice]
-st.write(Program)
+
 
 
    
