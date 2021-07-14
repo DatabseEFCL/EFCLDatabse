@@ -7,7 +7,8 @@ import pandas as pd
 def loadData(file_uploaded):
     df = pd.read_csv(file_uploaded, encoding='utf-8', nrows=1552)
     df.columns = ['Community League', 'Program', 'Delivery']
-    st.dataframe(df,3000,500)
+    a= st.dataframe(df,3000,500)
+    st.table(a)
     return df 
 
     
