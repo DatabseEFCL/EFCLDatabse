@@ -21,7 +21,7 @@ st.title(""" EFCL CLOG Database """)
 st.sidebar.subheader("Visualization Settings")
 
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key ='file_uploader')
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
 
 if file_uploaded is not None:
     df= loadData(file_uploaded)
