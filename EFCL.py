@@ -17,18 +17,18 @@ def loadData(file):
 
 
 
-if __name__=="__main__":
-     #title
-    st.title(""" EFCL CLOG Database """)
 
-    #Sidebar
-    st.sidebar.subheader("Visualization Settings")
+ #title
+st.title(""" EFCL CLOG Database """)
 
-    #File upload
-    file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key ='file_uploader')
+#Sidebar
+st.sidebar.subheader("Visualization Settings")
 
-    if file_uploaded is not None:
-        df= loadData(file_uploaded)
+#File upload
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key ='file_uploader')
+
+if file_uploaded is not None:
+    df= loadData(file_uploaded)
 
 
 
