@@ -22,7 +22,6 @@ def loadData(file_uploaded):
 if file_uploaded:
      temp= loadData(file_uploaded)
      Qst= st.selectbox("Choose the field you want to search by",list(temp.head()))
-     select_cols= st.selectbox('Choose Community League:',temp.head())
 
-     if select_cols:
-         st.write(select_cols)
+     if Qst:
+         st.write(Qst)
