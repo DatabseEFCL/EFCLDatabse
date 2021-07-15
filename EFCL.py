@@ -14,6 +14,7 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
+    global df
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
@@ -24,12 +25,12 @@ def loadData(file_uploaded):
 if file_uploaded:
     temp= loadData(file_uploaded)
 
-    Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),key = "1")
-    Com=temp['Community League'].drop_duplicates()
+Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+Com=df['Community League'].drop_duplicates()
     
-    if Qst == "Community League":
-            Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-            Com=temp['Community League'].drop_duplicates()
-            Program= temp.loc[temp['Program']== Com_choice]
-            st.table(Program)
-        
+if Qst == "Community League":
+        Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
+        Com=df['Community League'].drop_duplicates()
+        Program= df.loc[temp['Program']== Com_choice]
+        st.table(Program)
+    
