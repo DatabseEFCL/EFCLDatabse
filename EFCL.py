@@ -6,7 +6,7 @@ import pandas as pd
 st.title("EFCL CLOG DATABASE")
 
 #sidebar title
-st.sidebar.header("Data Visualization Settings")
+st.sidebar.header("Settings")
 
 #setup file upload
 uploaded_file= st.sidebar.file_uploader(label="Upload your CSV or Excel file.", type = ['csv','xlsx'])
