@@ -24,7 +24,7 @@ Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),ke
 Com=temp['Community League'].drop_duplicates()
 Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
 
-while file_uploaded:
+if file_uploaded:
    
      if Qst == "Community League":
          Com=temp['Community League'].drop_duplicates()
