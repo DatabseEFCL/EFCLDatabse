@@ -21,3 +21,5 @@ while uploaded_file is not None:
 
 try:
     st.write(df)
+except Exception as e:
+    print(e)
