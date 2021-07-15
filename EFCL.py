@@ -1,26 +1,23 @@
 import streamlit as st
 import pandas as pd
-
+from streamlit.uploaded_file_manager import UploadedFile
 
 #title
 st.title("EFCL CLOG DATABASE")
 
 #sidebar title
-st.sidebar.header("Settings")
+st.sidebar.header("Data Visualization Settings")
 
 #setup file upload
 uploaded_file= st.sidebar.file_uploader(label="Upload your CSV or Excel file.", type = ['csv','xlsx'])
 
 global df
-if uploaded_file is not None:
+while uploaded_file is not None:
     try:
         df= pd.read_csv(uploaded_file)
     except Exception as e:
         print(e)
         df= pd.read_excel(uploaded_file)
-elif uploaded_file is None:
-    
-    try:
-        st.write(df)
-    except  Exception as e:
-        st.write("Please upload file to application")
+
+while uploaded_file is None: # if file 
+  st.write("Please upload file to application")
