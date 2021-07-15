@@ -16,9 +16,12 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 def loadData(file_uploaded):
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
-    st.dataframe(df,3000,500)
+    
     Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+    Com=df['Community League'].drop_duplicates()
     Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
+    
+    
     return df
 
 
