@@ -27,4 +27,4 @@ while file_uploaded:
          Com=temp['Community League'].drop_duplicates()
          Com_choice= st.selectbox("Select the Community League:",list(Com))
          Program= temp["Program"].loc[temp["Community League"] & temp["Delivery"].loc[temp["Community League"]== Com_choice]]
-         st.table(Program)
+         st.write(Program)
