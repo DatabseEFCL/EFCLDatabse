@@ -21,5 +21,4 @@ if uploaded_file is not None:
 try:
     st.write(df)
 except  Exception as e:
-    print(e)
-    str.write("Please upload file to application")
+    st.write("Please upload file to application")
