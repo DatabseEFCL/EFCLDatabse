@@ -21,9 +21,9 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key ='0')
-League= st.checkbox("Search by Community League",key='1')
-Prog= st.checkbox("Search by Program",key='2')
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
+League= st.checkbox("Search by Community League")
+Prog= st.checkbox("Search by Program")
 
 st.write(League)
 st.write(Prog)
@@ -33,12 +33,12 @@ while file_uploaded is not None:
     while file_uploaded:
         if League:
             Community= df['Community League'].drop_duplicates()
-            ComChoice= st.selectbox('Select your Community League:', Community, key = '1')
+            ComChoice= st.selectbox('Select your Community League:', Community)
             Program= df["Program"].loc[df["Community League"] & df["Delivery"].loc[df["Community League"]== ComChoice]]
             st.write(Program)
         if Prog:
             Community= df['Program']
-            ComChoice= st.selectbox('Select your Community League:', Community, key = '1')
+            ComChoice= st.selectbox('Select your Community League:', Community)
             Delivery= df["Delivery"].loc[df["Community League"]== ComChoice]
             st.write(Delivery)
 
