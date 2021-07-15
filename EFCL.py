@@ -24,12 +24,12 @@ temp= None
 if file_uploaded:
     temp= loadData(file_uploaded)
 
-Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),key = "1")
-Com=temp['Community League'].drop_duplicates()
-Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
+    Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),key = "1")
+    Com=temp['Community League'].drop_duplicates()
+    Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
 
-if Qst == "Community League":
-        Com=temp['Community League'].drop_duplicates()
-        Program= temp.loc[temp['Program']== Com_choice]
-        st.table(Program)
-    
+    if Qst == "Community League":
+            Com=temp['Community League'].drop_duplicates()
+            Program= temp.loc[temp['Program']== Com_choice]
+            st.table(Program)
+
