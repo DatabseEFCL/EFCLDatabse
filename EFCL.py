@@ -27,11 +27,11 @@ if file_uploaded:
     df= loadData(file_uploaded)
 
     Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
-    Com=df['Community League'].drop_duplicates()
+    
         
     if Qst == "Community League":
-            Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Com=df['Community League'].drop_duplicates()
+            Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df.loc[df['Program']== Com_choice]
             st.table(Program)
     
