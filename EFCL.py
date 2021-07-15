@@ -19,7 +19,7 @@ def loadData(file_uploaded):
     st.dataframe(df,3000,500)
     return df
 
-if file_uploaded:
+while file_uploaded:
      temp= loadData(file_uploaded)
      Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),key = "1")
 
