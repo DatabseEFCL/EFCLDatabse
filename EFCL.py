@@ -12,7 +12,7 @@ st.sidebar.subheader("Visualization Settings")
 file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
