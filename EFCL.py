@@ -17,17 +17,15 @@ def loadData(file_uploaded):
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
-  
     return df
-Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
-Com=df['Community League'].drop_duplicates()
-Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-    
 
+temp= loadData(file_uploaded)
+Qst= st.selectbox("Choose the field you want to search by:",list(temp.head()),key = "1")
+Com=temp['Community League'].drop_duplicates()
+Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
 
 while file_uploaded:
-     temp= loadData(file_uploaded)
-
+   
      if Qst == "Community League":
          Com=temp['Community League'].drop_duplicates()
          Program= temp.loc[temp['Program']== Com_choice]
