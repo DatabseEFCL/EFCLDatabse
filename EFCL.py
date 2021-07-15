@@ -18,7 +18,9 @@ if uploaded_file is not None:
     except Exception as e:
         print(e)
         df= pd.read_excel(uploaded_file)
-try:
-    st.write(df)
-except  Exception as e:
-    st.write("Please upload file to application")
+elif uploaded_file is None:
+    
+    try:
+        st.write(df)
+    except  Exception as e:
+        st.write("Please upload file to application")
