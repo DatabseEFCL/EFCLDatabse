@@ -23,6 +23,9 @@ def loadData(file_uploaded):
     
     
     return df
+    return Qst
+    return Com
+    return Com_choice
 
 
 while file_uploaded:
