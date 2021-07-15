@@ -1,30 +1,37 @@
+
 import streamlit as st
 import pandas as pd
-from streamlit.uploaded_file_manager import UploadedFile
 
 #title
-st.title("EFCL CLOG DATABASE")
+st.title(""" EFCL CLOG Database """)
+st.text("Please upload your csv file, then select topic you want to search by.")
+#Sidebar
+st.sidebar.subheader("Visualization Settings")
 
-#sidebar title
-st.sidebar.header("Data Visualization Settings")
-#setup file upload
-uploaded_file= st.sidebar.file_uploader(label="Upload your CSV or Excel file.", type = ['csv','xlsx'])
+#File upload
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
 
-def file():
 
-    global df
-    if uploaded_file is not None:
-        try:
-            df= pd.read_csv(uploaded_file)
-        except Exception as e:
-            print(e)
-            df= pd.read_excel(uploaded_file)
-        finally:
-            str.write("Please upload file to application")
-    
-    try:
-        st.write(df)
-    except Exception as e:
-        str.write(e)
-        st.write("The uploaded file is incorrect")
+@st.cache(allow_output_mutation=True)
+def loadData(file_uploaded):
+    st.write("Your file has been uploaded !")
+    df = pd.read_csv(file_uploaded, encoding='unicode_escape')
+    st.dataframe(df,3000,500)
+    return df
+
+if file_uploaded:
+     temp= loadData(file_uploaded)
+     Qst= st.selectbox("Choose the field you want to search by",list(temp.head()))
+     select_cols= st.selectbox('Choose Community League')
+
+     if select_cols:
+         st.write(select_cols)
+'''
+while file_uploaded is not None:
+    df= loadData(file_uploaded)
    
+    Community= df['Community League'].drop_duplicates()
+    ComChoice= st.sidebar.selectbox('Select your Community League:', Community, )
+    Program= df["Program"].loc[df["Community League"] & df["Delivery"].loc[df["Community League"]== ComChoice]]
+    st.table(Program)
+'''
