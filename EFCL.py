@@ -25,12 +25,12 @@ def loadData(file_uploaded):
 if file_uploaded:
     temp= loadData(file_uploaded)
 
-Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
-Com=df['Community League'].drop_duplicates()
-    
-if Qst == "Community League":
-        Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-        Com=df['Community League'].drop_duplicates()
-        Program= df.loc[temp['Program']== Com_choice]
-        st.table(Program)
+    Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+    Com=df['Community League'].drop_duplicates()
+        
+    if Qst == "Community League":
+            Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
+            Com=df['Community League'].drop_duplicates()
+            Program= df.loc[temp['Program']== Com_choice]
+            st.table(Program)
     
