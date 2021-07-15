@@ -19,5 +19,5 @@ while uploaded_file is not None:
         print(e)
         df= pd.read_excel(uploaded_file)
 
-if uploaded_file is None: # if file 
-  st.write("Please upload file to application")
+try:
+    st.write(df)
