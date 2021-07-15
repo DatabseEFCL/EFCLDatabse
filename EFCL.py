@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from streamlit.uploaded_file_manager import UploadedFile
+
 
 #title
 st.title("EFCL CLOG DATABASE")
