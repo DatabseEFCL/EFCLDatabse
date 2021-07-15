@@ -19,7 +19,8 @@ def loadData(file_uploaded):
     
     return df
 
-global temp
+temp= None
+
 if file_uploaded:
     temp= loadData(file_uploaded)
 
