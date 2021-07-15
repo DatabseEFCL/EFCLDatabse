@@ -30,5 +30,5 @@ if file_uploaded:
     if Qst == "Community League":
             Com=temp['Community League'].drop_duplicates()
             Program= temp.loc[temp['Program']== Com_choice]
-            st.table(Program)
+            st.write(Program)
 
