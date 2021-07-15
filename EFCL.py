@@ -27,8 +27,4 @@ def file():
     except Exception as e:
         str.write(e)
         st.write("The uploaded file is incorrect")
-    finally:
-        file()
-        
-def csv_file():
-    
+   
