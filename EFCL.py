@@ -22,11 +22,6 @@ st.sidebar.subheader("Visualization Settings")
 
 #File upload
 file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
-League= st.checkbox("Search by Community League",key='1')
-Prog= st.checkbox("Search by Program",key='2')
-
-st.write(League)
-st.write(Prog)
 
 while file_uploaded is not None:
     df= loadData(file_uploaded)
