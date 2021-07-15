@@ -1,6 +1,7 @@
 
 import streamlit as st
 import pandas as pd
+from collections import namedtuple
 
 #title
 st.title(""" EFCL CLOG Database """)
@@ -25,12 +26,12 @@ def loadData(file_uploaded):
 if file_uploaded:
     temp= loadData(file_uploaded)
 
-    Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
-    Com=df['Community League'].drop_duplicates()
+    Qst= st.selectbox("Choose the field you want to search by:",list(temp.df.head()),key = "1")
+    Com=temp.df['Community League'].drop_duplicates()
         
     if Qst == "Community League":
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-            Com=df['Community League'].drop_duplicates()
-            Program= df.loc[temp['Program']== Com_choice]
+            Com=temp.df['Community League'].drop_duplicates()
+            Program= temp.df.loc[temp.df['Program']== Com_choice]
             st.table(Program)
     
