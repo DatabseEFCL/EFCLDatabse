@@ -22,16 +22,7 @@ def loadData(file_uploaded):
 if file_uploaded:
      temp= loadData(file_uploaded)
      Qst= st.selectbox("Choose the field you want to search by",list(temp.head()))
-     select_cols= st.selectbox('Choose Community League')
+     select_cols= st.selectbox('Choose Community League:',temp.head())
 
      if select_cols:
          st.write(select_cols)
-'''
-while file_uploaded is not None:
-    df= loadData(file_uploaded)
-   
-    Community= df['Community League'].drop_duplicates()
-    ComChoice= st.sidebar.selectbox('Select your Community League:', Community, )
-    Program= df["Program"].loc[df["Community League"] & df["Delivery"].loc[df["Community League"]== ComChoice]]
-    st.table(Program)
-'''
