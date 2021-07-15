@@ -7,7 +7,7 @@ import pandas as pd
 def loadData(file_uploaded):
     df = pd.read_csv(file_uploaded, encoding='utf-8', nrows=1552)
     df.columns = ['Community League', 'Program', 'Delivery']
-    
+    st.dataframe(df,3000,500)
     return df 
 
     
@@ -21,13 +21,15 @@ st.title(""" EFCL CLOG Database """)
 st.sidebar.subheader("Visualization Settings")
 
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key ='file_uploader')
 
-if file_uploaded is not None:
+while file_uploaded is not None:
     df= loadData(file_uploaded)
 
-a= st.dataframe(df,3000,500)
-st.table(a)
+    Community= df['Community League'].drop_duplicates()
+    ComChoice= st.sidebar.selectbox('Select your Community League:', Community)
+    Program= df["Program"].loc[df["Community League"]== ComChoice]
+    st.write(Program)
 
 
-   
+    
