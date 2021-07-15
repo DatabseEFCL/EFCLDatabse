@@ -12,7 +12,7 @@ st.sidebar.subheader("Visualization Settings")
 file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
 
 
-@st.cache(suppress_st_warning=True,allow_output_mutation=True)
+@st.cache(allow_output_mutation=True)
 def loadData(file_uploaded):
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
@@ -26,5 +26,5 @@ while file_uploaded:
      if Qst == "Community League":
          Com=temp['Community League'].drop_duplicates()
          Com_choice= st.selectbox("Select the Community League:",list(Com))
-         Program= temp["Program"].loc[temp["Community League"]==Com_choice & temp["Delivery"].loc[temp["Community League"]== Com_choice]]
+         Program= temp["Program"].loc[temp["Community League"] == Com_choice,"Delivery"]
          st.table(Program)
