@@ -36,7 +36,7 @@ if file_uploaded:
             st.table(Program)
             st.table(Delivery)
             
-    if Qst == " Program":
+    if Qst == "Program":
             Program = df["Program"]
             Program_ch= st.selectboc("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
