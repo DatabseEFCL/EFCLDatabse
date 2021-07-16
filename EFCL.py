@@ -34,8 +34,8 @@ if file_uploaded:
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            col1.write(Program, use_column_width=True)
-            col2.write(Delivery, use_column_width=True)
+            st.write(Program, Delivery)
+            #col2.write(Delivery, use_column_width=True)
             
     if Qst == "Program":
             Program = df["Program"].sort_values()
