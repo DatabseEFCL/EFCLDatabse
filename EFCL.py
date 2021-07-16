@@ -26,7 +26,7 @@ def loadData(file_uploaded):
 if file_uploaded:
     df= loadData(file_uploaded)
 
-    Qst= st.selectbox("Choose the field you want to search by:",list(df.head("Community League","Program")),key = "1")
+    Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
     
         
     if Qst == "Community League":
