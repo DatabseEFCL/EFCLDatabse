@@ -4,7 +4,6 @@ import pandas as pd
 
 #title
 st.title(""" EFCL CLOG Database """)
-st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
 
 st.text("Please upload your csv file, then select topic you want to search by.")
 #Sidebar
