@@ -38,7 +38,7 @@ if file_uploaded:
             
             
     if Qst == "Program":
-            Program = df["Program"].sort_values()
+            Program = df["Program"].drop_duplicates().sort_values()
             Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
@@ -46,7 +46,7 @@ if file_uploaded:
             st.table(Delivery)
     
     if Qst == "Delivery":
-            Delivery= df["Delivery"].drop_duplicates()
+            Delivery= df["Delivery"].drop_duplicates().sort_values()
             st.text("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             col1,col2=st.beta_columns(2)
             D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
