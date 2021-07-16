@@ -38,7 +38,7 @@ if file_uploaded:
             
     if Qst == "Program":
             Program = df["Program"]
-            Program_ch= st.selectboc("Select the Program:",list(Program),key = '3')
+            Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
             st.table(Community)
