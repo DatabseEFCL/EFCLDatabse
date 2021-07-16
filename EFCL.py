@@ -47,7 +47,7 @@ if file_uploaded:
     
     if Qst == "Delivery":
             Delivery= df["Delivery"].drop_duplicates().sort_values()
-            st.subhead("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
+            st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             col1,col2=st.beta_columns(2)
             D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
             P_lower= df["Program"].astype(str).str.lower()
