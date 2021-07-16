@@ -32,9 +32,8 @@ if file_uploaded:
             Com=df['Community League'].drop_duplicates()
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
-            #Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            #Result= Program + Delivery
-            st.table(Program)
+            Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
+            st.table(Program,Delivery)
             
     if Qst == " Program":
             Program = df["Program"]
