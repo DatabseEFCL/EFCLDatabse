@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from collections import namedtuple
+
 
 #title
 st.title(""" EFCL CLOG Database """)
