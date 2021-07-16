@@ -41,6 +41,6 @@ if file_uploaded:
             Prgoram_ch= st.selectboc("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
-            Result == Community + Delivery
+            Result == Community 
             st.table(Result)
     
