@@ -16,6 +16,8 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
+    st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
+
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
     return df
@@ -47,7 +49,6 @@ if file_uploaded:
     
     if Qst == "Delivery":
             Delivery= df["Delivery"].drop_duplicates().sort_values()
-            st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             col1,col2=st.beta_columns(2)
             D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
             P_lower= df["Program"].astype(str).str.lower()
