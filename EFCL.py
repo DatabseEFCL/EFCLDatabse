@@ -29,7 +29,7 @@ if file_uploaded:
     
         
     if Qst == "Community League":
-            Com=df['Community League'].sort_values().drop_duplicates()
+            Com=df['Community League'].drop_duplicates()
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
@@ -37,7 +37,7 @@ if file_uploaded:
             st.table(Delivery)
             
     if Qst == "Program":
-            Program = df["Program"].sort_values()
+            Program = df["Program"].drop_duplicates()
             Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
