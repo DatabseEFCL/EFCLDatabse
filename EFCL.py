@@ -34,8 +34,8 @@ if file_uploaded:
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            col1.table(Program, use_column_width=True)
-            col2.table(Delivery, use_column_width=True)
+            col1.write(Program, use_column_width=True)
+            col2.write(Delivery, use_column_width=True)
             
     if Qst == "Program":
             Program = df["Program"].sort_values()
@@ -43,8 +43,8 @@ if file_uploaded:
             Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
-            col1.table(Community, use_column_width=True)
-            col2.table(Delivery, use_column_width=True)
+            col1.write(Community, use_column_width=True)
+            col2.write(Delivery, use_column_width=True)
     
     if Qst == "Delivery":
             Delivery= df["Delivery"].drop_duplicates()
@@ -52,5 +52,5 @@ if file_uploaded:
             D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
             Program= df["Program"].loc[df['Delivery']== D_ch] 
             Community= df["Community League"].loc[df['Delivery']== D_ch]
-            col1.table(Program, use_column_width=True)
-            col2.table(Community, use_column_width=True)
+            col1.write(Program, use_column_width=True)
+            col2.write(Community, use_column_width=True)
