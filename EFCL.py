@@ -31,10 +31,10 @@ if file_uploaded:
     if Qst == "Community League":
             Com=df['Community League'].drop_duplicates()
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-            Program= df["Program"].loc[df['Community League']== Com_choice]
-            Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            Result= Program + Delivery
-            st.table(Result)
+            Program= df["Program"].loc[df['Community League']== Com_choice] + df["Delivery"].loc[df['Community League']== Com_choice]
+            #Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
+            #Result= Program + Delivery
+            st.table(Program)
             
     if Qst == " Program":
             Program = df["Program"]
