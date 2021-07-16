@@ -33,7 +33,7 @@ if file_uploaded:
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            st.table(Program+Delivery)
+            st.table(Program & Delivery)
             
     if Qst == " Program":
             Program = df["Program"]
