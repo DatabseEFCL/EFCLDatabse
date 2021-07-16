@@ -45,7 +45,7 @@ if file_uploaded:
             st.table(Delivery)
     
     if Qst == "Delivery":
-            Delivery= df["Delivery"].drop_duplicates()
+            Delivery= df["Delivery"].sort_values().drop_duplicates()
             col1,col2=st.beta_columns(2)
             D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
             Program= df["Program"].loc[df['Delivery']== D_ch] 
