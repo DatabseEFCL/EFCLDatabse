@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 from collections import namedtuple
@@ -32,7 +31,6 @@ if file_uploaded:
     if Qst == "Community League":
             Com=df['Community League'].drop_duplicates()
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
-            Program= df["Community League"].loc[df['Program']== Com_choice]
+            Program= df["Program"].loc[df['Community League']== Com_choice]
             st.table(Program)
-    
     
