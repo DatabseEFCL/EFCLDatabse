@@ -4,7 +4,6 @@ import pandas as pd
 
 #title
 st.title(""" EFCL CLOG Database """)
-
 st.text("Please upload your csv file, then select topic you want to search by.")
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
@@ -17,6 +16,7 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
+    st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
 
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
@@ -26,7 +26,8 @@ def loadData(file_uploaded):
 
 if file_uploaded:
     df= loadData(file_uploaded)
-
+    st.write("Your file has been uploaded !")
+    st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
     Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
     
         
