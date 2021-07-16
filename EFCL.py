@@ -29,9 +29,8 @@ if file_uploaded:
     
         
     if Qst == "Community League":
-            Com=df['Community League'].drop_duplicates()
-            SortCom=df.sort_values(Com)
-            Com_choice= st.selectbox("Select the Community League:",list(SortCom).sort(),key = "2")
+            Com=df['Community League'].sort_values().drop_duplicates()
+            Com_choice= st.selectbox("Select the Community League:",list(Com).sort(),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
             st.table(Program)
