@@ -36,8 +36,7 @@ if file_uploaded:
             Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
             Program= df["Program"].loc[df['Community League']== Com_choice] 
             Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
-            st.table(Program)
-            st.table(Delivery)
+            st.table(pd.concat([Program, Delivery], axis=1))
             
             
     if Qst == "Program":
@@ -45,8 +44,6 @@ if file_uploaded:
             Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch]
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
-            #st.table(Community)
-            #st.table(Delivery)
             st.table(pd.concat([Community, Delivery], axis=1))
     
     if Qst == "Delivery":
@@ -56,5 +53,4 @@ if file_uploaded:
             P_lower= df["Program"].astype(str).str.lower()
             Program= P_lower.loc[df['Delivery']== D_ch] 
             Community= df["Community League"].loc[df['Delivery']== D_ch]
-            col1.write(Program, use_column_width=True)
-            col2.write(Community, use_column_width=True)
+            st.table(pd.concat([Program, Community], axis=1))
