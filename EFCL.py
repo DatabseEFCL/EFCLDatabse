@@ -47,7 +47,7 @@ if file_uploaded:
             Delivery = df["Delivery"].loc[df['Program']== Program_ch]
             #st.table(Community)
             #st.table(Delivery)
-            st.write(pd.concat([Community, Delivery], axis=1))
+            st.table(pd.concat([Community, Delivery], axis=1))
     
     if Qst == "Delivery":
             Delivery= df["Delivery"].drop_duplicates().sort_values()
