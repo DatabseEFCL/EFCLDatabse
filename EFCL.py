@@ -43,7 +43,7 @@ if file_uploaded:
             Program = df["Program"].drop_duplicates().sort_values()
             Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
             Community= df["Community League"].loc[df['Program']== Program_ch].drop_duplicates().sort_values()
-            Delivery = df["Delivery"].loc[df['Program']== Program_ch]
+            Delivery = df["Delivery"].loc[df['Program']== Program_ch].drop_duplicates().sort_values()
             st.table(pd.concat([Community, Delivery], axis=1))
     
     if Qst == "Delivery":
