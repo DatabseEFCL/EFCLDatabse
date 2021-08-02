@@ -23,7 +23,7 @@ def loadData(file_uploaded):
     return df
 
 
-def file():
+def file(df):
         
         if file_uploaded:
 
