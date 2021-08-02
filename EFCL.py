@@ -23,8 +23,8 @@ def loadData(file_uploaded):
     return df
 
 
-def file(df):
-        
+if __name__== "__main__":
+        loadData(file_uploaded)
         if file_uploaded:
 
                 df= loadData(file_uploaded)
@@ -56,7 +56,3 @@ def file(df):
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
-
-if __name__== "__main__":
-        loadData(file_uploaded)
-        file()
