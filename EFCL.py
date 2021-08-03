@@ -25,7 +25,7 @@ def loadData(file_uploaded):
 
 if __name__== "__main__":
         
-        if not loadData(file_uploaded):
+        if loadData(file_uploaded)== None:
             st.subheader("There is no file, please upload.")
         else:
                 loadData(file_uploaded)
