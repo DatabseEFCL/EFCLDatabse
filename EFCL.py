@@ -24,9 +24,11 @@ def loadData(file_uploaded):
 
 
 if __name__== "__main__":
-        loadData(file_uploaded)
-        if file_uploaded:
-
+        
+        if not loadData(file_uploaded):
+            st.subheader("There is no file, please upload.")
+        else:
+                loadData(file_uploaded)
                 df= loadData(file_uploaded)
                 st.write("Your file has been uploaded !")
                 st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
