@@ -9,7 +9,9 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'])
+file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key='a')
+
+Map= st.sidebar.button("Map")
 
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
