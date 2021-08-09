@@ -39,7 +39,7 @@ def map(file_uploaded2):
 
 if __name__== "__main__":
  
-        if file_uploaded is not None:
+        if file_uploaded :
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
                 st.write("Your file has been uploaded !")
