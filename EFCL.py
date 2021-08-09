@@ -25,7 +25,7 @@ def loadData(file_uploaded):
 
 if __name__== "__main__":
         
-        while st.button("CLOG Database") and file_uploaded :
+        if st.button("CLOG Database", key='5') and file_uploaded is not None:
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
                 st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
@@ -56,7 +56,7 @@ if __name__== "__main__":
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
-        if st.button("Map"):
+        if st.button("Map", key = '6'):
                 pass
         else:
                 st.markdown("<h4 style='text-align: left; color:red;'>There is no uploaded CSV file.</h4>", unsafe_allow_html=True)
