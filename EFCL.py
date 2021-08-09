@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os.path
 
 
 #title
@@ -14,19 +15,22 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
-
-    st.write("Your file has been uploaded !")
-    st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-
-    df = pd.read_csv(file_uploaded, encoding='unicode_escape')
+    global df
+    if os.path.isfile(file_uploaded):
+        st.write("Your file has been uploaded !")
+        st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
+        df = pd.read_csv(file_uploaded, encoding='unicode_escape')
+    else:
+        st.write ("There is no file uploaded")
     
     return df
 
 
 if __name__== "__main__":
+
         loadData(file_uploaded)
 
-        if st.button("CLOGG Database"):
+        if st.button("Access Database"):
                 if file_uploaded:
 
                         df= loadData(file_uploaded)
@@ -58,5 +62,5 @@ if __name__== "__main__":
                                 Program= P_lower.loc[df['Delivery']== D_ch] 
                                 Community= df["Community League"].loc[df['Delivery']== D_ch]
                                 st.table(pd.concat([Program, Community], axis=1))
-        if st.button("Map"):
-                pass
+        if st.button("Access Map"):
+
