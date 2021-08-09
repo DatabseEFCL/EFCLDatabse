@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import requests 
+import smtplib
 
 
 #title
@@ -24,6 +26,12 @@ def loadData(file_uploaded):
     
     return df
 
+@st.cache(suppress_st_warning=True,allow_output_mutation=True)
+def map():
+        API_file = pd.read_csv("api-key.txt")
+
+        
+        return API_file
 
 if __name__== "__main__":
  
@@ -58,5 +66,24 @@ if __name__== "__main__":
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
+
+        if Map:
+                #API KEY
+                a= map().API_file
+                #User address input
+                user_input = st.text_input("Enter users current address",  )
+                program_input= st.text_input("Enter amenities address", )
+                
+                #base url
+                url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
+
+                #get response
+                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + a)
+
+                #return time as text 
+                distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
+                duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
+                st.write("The distance to reach destination is: ", distance)
+                st.write("The duration of travel is: ", duration )
         else:
                 st.write("There is no csv file")
