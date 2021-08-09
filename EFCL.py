@@ -32,6 +32,8 @@ def loadData(file_uploaded):
 def map(file_uploaded2):
 
         API_file = pd.read_csv(file_uploaded2, encoding='unicode_escape')
+        st.text_input("Enter users current address",  )
+        st.text_input("Enter amenities address", )
 
         return API_file
 
