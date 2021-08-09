@@ -15,7 +15,7 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
 
-    st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !.</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
     st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
 
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
@@ -28,7 +28,7 @@ if __name__== "__main__":
         if st.button("CLOG Database") and file_uploaded is not None:
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
-                st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !.</h4>", unsafe_allow_html=True)
+                st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
                 st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
                 Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
                 
