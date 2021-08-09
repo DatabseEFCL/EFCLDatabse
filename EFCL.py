@@ -25,7 +25,7 @@ def loadData(file_uploaded):
 
 if __name__== "__main__":
         loadData(file_uploaded)
-        if file_uploaded:
+        if file_uploaded is not None:
 
                 df= loadData(file_uploaded)
                 st.write("Your file has been uploaded !")
@@ -56,3 +56,5 @@ if __name__== "__main__":
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
+        else:
+                st.write("There is no csv file uploaded")
