@@ -28,9 +28,11 @@ def loadData(file_uploaded):
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def map():
-        API_file = pd.read_csv("api-key.txt")
 
-        
+        API_key = open("api-key.txt","r")
+        API_file= API_key.read()    
+        API_key.close()
+            
         return API_file
 
 if __name__== "__main__":
