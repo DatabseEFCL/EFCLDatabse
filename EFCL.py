@@ -15,7 +15,7 @@ file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
 
-    st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
+    st.write("Your file has been uploaded !")
     st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
 
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
@@ -24,11 +24,11 @@ def loadData(file_uploaded):
 
 
 if __name__== "__main__":
-        
-        if  file_uploaded:
+ 
+        if file_uploaded is not None:
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
-                st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
+                st.write("Your file has been uploaded !")
                 st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
                 Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
                 
@@ -56,7 +56,5 @@ if __name__== "__main__":
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
-        if st.button("Map", key = '6'):
-                pass
         else:
-                st.markdown("<h4 style='text-align: left; color:red;'>There is no uploaded CSV file.</h4>", unsafe_allow_html=True)
+                st.write("There is no csv file")
