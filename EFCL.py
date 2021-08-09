@@ -26,7 +26,7 @@ def loadData(file_uploaded):
 if __name__== "__main__":
         loadData(file_uploaded)
 
-        if st.button("Access Database"):
+        if st.button("CLOGG Database"):
                 if file_uploaded:
 
                         df= loadData(file_uploaded)
@@ -58,5 +58,5 @@ if __name__== "__main__":
                                 Program= P_lower.loc[df['Delivery']== D_ch] 
                                 Community= df["Community League"].loc[df['Delivery']== D_ch]
                                 st.table(pd.concat([Program, Community], axis=1))
-        if st.button("Access Map"):
+        if st.button("Map"):
                 pass
