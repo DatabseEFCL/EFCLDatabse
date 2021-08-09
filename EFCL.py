@@ -25,7 +25,6 @@ def loadData(file_uploaded):
 
 if __name__== "__main__":
 
-        loadData(file_uploaded)
 
         if st.button("Access Database"):
 
