@@ -25,7 +25,7 @@ def loadData(file_uploaded):
 
 if __name__== "__main__":
         
-        if st.button("CLOG Database") and file_uploaded :
+        while st.button("CLOG Database") and file_uploaded :
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
                 st.markdown("<h4 style='text-align: left; color:green;'>Your file has been uploaded !</h4>", unsafe_allow_html=True)
