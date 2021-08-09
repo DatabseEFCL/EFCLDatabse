@@ -59,4 +59,4 @@ if __name__== "__main__":
         if st.button("Map"):
                 pass
         else:
-                st.write("There is no csv file uploaded")
+                st.markdown("<h2 style='text-align: right; color:#FF0000 ;'>There is no uploaded CSV file.</h1>", unsafe_allow_html=True)
