@@ -13,6 +13,8 @@ st.sidebar.subheader("Visualization Settings")
 #File upload
 file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key='a')
 
+file_uploaded2= st.sidebar.file_uploader(label= "Upload your api file.", type= ['txt'], key='b')
+
 Map= st.sidebar.button("Map")
 
 
@@ -27,12 +29,10 @@ def loadData(file_uploaded):
     return df
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map():
+def map(file_uploaded2):
 
-        API_key = open("api-key.txt","r")
-        API_file= API_key.read()    
-        API_key.close()
-            
+        API_file = pd.read_csv(file_uploaded, encoding='unicode_escape')
+
         return API_file
 
 if __name__== "__main__":
@@ -71,7 +71,8 @@ if __name__== "__main__":
 
         if Map:
                 #API KEY
-                a= map().API_file
+                map(file_uploaded2)
+                API_file= map(file_uploaded2)
                 #User address input
                 user_input = st.text_input("Enter users current address",  )
                 program_input= st.text_input("Enter amenities address", )
@@ -80,7 +81,7 @@ if __name__== "__main__":
                 url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
 
                 #get response
-                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + a)
+                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
 
                 #return time as text 
                 distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
