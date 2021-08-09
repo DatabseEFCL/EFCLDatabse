@@ -39,7 +39,7 @@ def map(file_uploaded2):
 
 if __name__== "__main__":
  
-        if file_uploaded :
+        if file_uploaded is not None:
                 loadData(file_uploaded)
                 df= loadData(file_uploaded)
                 st.write("Your file has been uploaded !")
@@ -72,23 +72,24 @@ if __name__== "__main__":
                         st.table(pd.concat([Program, Community], axis=1))
 
         if Map:
-                #API KEY
-                map(file_uploaded2)
-                API_file= map(file_uploaded2)
-                #User address input
-                user_input = st.text_input("Enter users current address",  )
-                program_input= st.text_input("Enter amenities address", )
-                
-                #base url
-                url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
+                if file_uploaded2 is not None:
+                        #API KEY
+                        map(file_uploaded2)
+                        API_file= map(file_uploaded2)
+                        #User address input
+                        user_input = st.text_input("Enter users current address",  )
+                        program_input= st.text_input("Enter amenities address", )
+                        
+                        #base url
+                        url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
 
-                #get response
-                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
+                        #get response
+                        r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
 
-                #return time as text 
-                distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
-                duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
-                st.write("The distance to reach destination is: ", distance)
-                st.write("The duration of travel is: ", duration )
+                        #return time as text 
+                        distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
+                        duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
+                        st.write("The distance to reach destination is: ", distance)
+                        st.write("The duration of travel is: ", duration )
         else:
                 st.write("There is no csv file")
