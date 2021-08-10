@@ -72,22 +72,6 @@ if __name__== "__main__":
 
         if Map:
             pass
-                map()
-                API_file= map()
-                #User address input
-                user_input = st.text_input("Enter users current address", key='o' )
-                program_input= st.text_input("Enter amenities address",key='k')
-                
-                #base url
-                url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
-
-                #get response
-                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
-
-                #return time as text 
-                distance = r.json()["rows"][0]["elements"][0]["duration"]["text"]
-                duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
-                st.write("The distance to reach destination is: ", distance)
-                st.write("The duration of travel is: ", duration )
+               
         else:
                 st.write("There is no csv file")
