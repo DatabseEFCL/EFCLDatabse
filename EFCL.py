@@ -84,7 +84,7 @@ if __name__== "__main__":
                 r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
 
                 #return time as text 
-                distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
+                distance = r.json()["rows"][0]["elements"][0]["distance"]["text"]
                 duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
                 st.write("The distance to reach destination is: ", distance)
                 st.write("The duration of travel is: ", duration )
