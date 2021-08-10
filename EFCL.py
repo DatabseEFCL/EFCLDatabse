@@ -73,5 +73,5 @@ if __name__== "__main__":
         if Map:
             pass
                
-        else:
+        if file_uploaded is None:
                 st.write("There is no csv file")
