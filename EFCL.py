@@ -71,6 +71,7 @@ if __name__== "__main__":
                         st.table(pd.concat([Program, Community], axis=1))
 
         if Map:
+            pass
                 map()
                 API_file= map()
                 #User address input
