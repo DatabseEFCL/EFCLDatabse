@@ -74,8 +74,8 @@ if __name__== "__main__":
                 map()
                 API_file= map()
                 #User address input
-                user_input = st.text_input("Enter users current address",  )
-                program_input= st.text_input("Enter amenities address", )
+                user_input = st.text_input("Enter users current address", key='o' )
+                program_input= st.text_input("Enter amenities address",key='k')
                 
                 #base url
                 url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
