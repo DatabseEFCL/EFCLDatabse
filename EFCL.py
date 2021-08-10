@@ -13,7 +13,6 @@ st.sidebar.subheader("Visualization Settings")
 #File upload
 file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key='a')
 
-file_uploaded2= st.sidebar.file_uploader(label= "Upload your api file.", type= ['txt'], key='b')
 
 Map= st.sidebar.button("Map")
 
@@ -29,9 +28,9 @@ def loadData(file_uploaded):
     return df
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map(file_uploaded2):
+def map():
 
-        API_file = pd.read_csv(file_uploaded2, encoding='unicode_escape')
+        API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
         st.text_input("Enter users current address",  )
         st.text_input("Enter amenities address", )
 
@@ -72,24 +71,22 @@ if __name__== "__main__":
                         st.table(pd.concat([Program, Community], axis=1))
 
         if Map:
-                if file_uploaded2 is not None:
-                        #API KEY
-                        map(file_uploaded2)
-                        API_file= map(file_uploaded2)
-                        #User address input
-                        user_input = st.text_input("Enter users current address",  )
-                        program_input= st.text_input("Enter amenities address", )
-                        
-                        #base url
-                        url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
+                map()
+                API_file= map()
+                #User address input
+                user_input = st.text_input("Enter users current address",  )
+                program_input= st.text_input("Enter amenities address", )
+                
+                #base url
+                url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
 
-                        #get response
-                        r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
+                #get response
+                r= requests.get(url + "orgins=" + user_input + "&destinations" + program_input + "&key" + API_file)
 
-                        #return time as text 
-                        distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
-                        duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
-                        st.write("The distance to reach destination is: ", distance)
-                        st.write("The duration of travel is: ", duration )
+                #return time as text 
+                distance = r.jsoon()["rows"][0]["elements"][0]["distance"]["text"]
+                duration=r.json()["rows"][0]["elements"][0]["duration_in_traffic"]["text"]
+                st.write("The distance to reach destination is: ", distance)
+                st.write("The duration of travel is: ", duration )
         else:
                 st.write("There is no csv file")
