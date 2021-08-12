@@ -84,12 +84,13 @@ def Directions():
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
                         MailAd= df["Mailing Address"].loc[df['Community League']== League]
                         StreetAd= df["Street Address"].loc[df['Community League']== League]
+
                         ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
 
-                        #if ratio == "Street Address":
-                                #st.write(StreetAd)
-                        #if ratio == "Mailling Address":
-                        st.write(MailAd)
+                        if ratio == "Street Address":
+                                st.write(StreetAd)
+                        if ratio == "Mailing Address":
+                                st.write(MailAd)
                 else:
                         st.write("There is no file uploaded")
 
