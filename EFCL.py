@@ -82,11 +82,7 @@ if __name__== "__main__":
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
                         
                         ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
-                        MailAd= df["Mailing Address"].loc[df['Community League']== ratio]
-                        StreetAd= df["Street Address"].loc[df['Community League']== ratio]
+                        MailAd= df["Mailing Address"].loc[df['Community League']== League]
+                        StreetAd= df["Street Address"].loc[df['Community League']== League]
                         
-                        if ratio == 'Street Address':
-                                st.selectbox("Select the address",list(df["Street Address"]),key='l')
-
-                        if ratio == "Mailing Address":
-                                st.selectbox("Select the address",list(df["Mailing Address"]),key='m')
+                        
