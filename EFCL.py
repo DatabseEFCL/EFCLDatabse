@@ -75,10 +75,10 @@ if __name__== "__main__":
                         st.table(pd.concat([Program, Community], axis=1))
 
         if Map:
-                file_uploaded2= st.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
+                file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
                 map(file_uploaded2)
                 df= map(file_uploaded2)
-                League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
+                League= st.sidebar.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
         if file_uploaded is None:
                 st.write("There is no csv file")
