@@ -49,7 +49,6 @@ if __name__== "__main__":
             
             while file_uploaded is not None:
                 
-                
                         
                 if Qst == "Community League":
                         Com=df['Community League'].sort_values().drop_duplicates()
@@ -82,5 +81,5 @@ if __name__== "__main__":
                 if file_uploaded2 is not None:
                     League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
-        while file_uploaded is None:
+        if file_uploaded is None:
                 st.write("There is no csv file")
