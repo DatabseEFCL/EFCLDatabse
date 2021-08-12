@@ -80,7 +80,7 @@ if __name__== "__main__":
                 df= map(file_uploaded2)
                 if file_uploaded2 is not None:
                         st.write(df)
-                        League= st.sidebar.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
+                        League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
         if file_uploaded is None:
                 st.write("There is no csv file")
