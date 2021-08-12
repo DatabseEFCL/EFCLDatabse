@@ -11,8 +11,7 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
-file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
+
 
 Map_button= st.radio("Use button to access the map",['Map'], key='8')
 
