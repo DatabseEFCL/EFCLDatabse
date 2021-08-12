@@ -14,7 +14,7 @@ SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Data
 
 
 
-
+#chaching/saving CLOG data
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
 
@@ -25,6 +25,7 @@ def loadData(file_uploaded):
     
     return df
 
+#caching address 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def map(file_uploaded2):
      
@@ -40,7 +41,7 @@ def database():
 
         #function to view the databse
         if file_uploaded:
-            loadData(file_uploaded)
+           
             df= loadData(file_uploaded)
             st.write("Your file has been uploaded !")
             st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
@@ -49,7 +50,7 @@ def database():
             if file_uploaded is not None:
                 
                         
-                if Qst == "Community League":
+                if Qst == "Community League": #outout if the selected field is community league
                         Com=df['Community League'].sort_values().drop_duplicates()
                         Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
                         Program= df["Program"].loc[df['Community League']== Com_choice] 
@@ -57,16 +58,15 @@ def database():
                         st.table(pd.concat([Program, Delivery], axis=1))
                         
                         
-                if Qst == "Program":
+                if Qst == "Program":#outout if the selected field is Program
                         Program = df["Program"].drop_duplicates().sort_values()
                         Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
                         Community= df["Community League"].loc[df['Program']== Program_ch]
                         Delivery = df["Delivery"].loc[df['Program']== Program_ch]
                         st.table(pd.concat([Community, Delivery], axis=1))
                 
-                if Qst == "Delivery":
+                if Qst == "Delivery":#outout if the selected field is Delivery 
                         Delivery= df["Delivery"].drop_duplicates().sort_values()
-                        col1,col2=st.beta_columns(2)
                         D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
                         P_lower= df["Program"].astype(str).str.lower()
                         Program= P_lower.loc[df['Delivery']== D_ch] 
@@ -75,12 +75,12 @@ def database():
         
 
 def Directions():
-        file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
-        if file_uploaded2 is not None:
-                map(file_uploaded2)
+        file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
 
-                if file_uploaded2 is not None:
-                        df= map(file_uploaded2)
+        if file_uploaded2 is not None:
+                df= map(file_uploaded2) #calls map funciton 
+
+                if file_uploaded2 :
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
                         MailAd= df["Mailing Address"].loc[df['Community League']== League]
                         StreetAd= df["Street Address"].loc[df['Community League']== League]
@@ -95,10 +95,10 @@ def Directions():
                         st.write("There is no file uploaded")
 
 if __name__== "__main__":
-        if SideOption == "Dataset":
+        if SideOption == "Dataset": #if sidebar option is Dataset then the clog databse function will run.
 
                 database()
 
-        if SideOption == "Map":
+        if SideOption == "Map": #if map is selected then addresses and directions will be shown.
                 Directions()
         
