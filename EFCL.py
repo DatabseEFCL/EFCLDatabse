@@ -37,7 +37,9 @@ def map(file_uploaded2):
         #st.text_input("Enter users current address",  )
         #st.text_input("Enter amenities address", )
 
-def database(file_uploaded):
+def database():
+        file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
+
         #function to view the databse
         if file_uploaded:
             loadData(file_uploaded)
@@ -74,7 +76,8 @@ def database(file_uploaded):
                         st.table(pd.concat([Program, Community], axis=1))
         
 
-def Directions(file_uploaded2):
+def Directions():
+        file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
         if Map_button:
                 map(file_uploaded2)
 
@@ -95,8 +98,8 @@ def Directions(file_uploaded2):
 if __name__== "__main__":
         if SideOption == "Dataset":
 
-                database(file_uploaded)
+                database()
 
         if SideOption == "Map":
-                Directions(file_uploaded2)
+                Directions()
         
