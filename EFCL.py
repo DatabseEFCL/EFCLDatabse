@@ -14,7 +14,7 @@ st.sidebar.subheader("Visualization Settings")
 file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
 file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
 
-Map= st.sidebar.button("Map",key="8")
+Map= st.sidebar.ratio("Map",key="8")
 
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
