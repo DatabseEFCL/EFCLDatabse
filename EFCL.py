@@ -86,6 +86,7 @@ if __name__== "__main__":
                         StreetAd= df["Street Address"].loc[df['Community League']== ratio]
                         
                         if ratio == 'Street Address':
-                                st.selectbox(list(df["Street Address"]),key='l')
+                                st.selectbox("Select the address",list(df["StreetAd"]),key='l')
+
                         if ratio == "Mailing Address":
-                                st.selectbox(list(df["Mailing Address"]),key='m')
+                                st.selectbox("Select the address",list(df["MailAd"]),key='m')
