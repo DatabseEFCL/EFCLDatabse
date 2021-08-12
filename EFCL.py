@@ -79,5 +79,5 @@ if __name__== "__main__":
                 map(file_uploaded2)
                 df= map(file_uploaded2)
                 if file_uploaded2 is not None:
-                        st.write(df)
+                        
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
