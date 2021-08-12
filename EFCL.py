@@ -29,10 +29,10 @@ def loadData(file_uploaded):
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def map(file_uploaded2):
-     Map= st.sidebar.button("Map",key="8")
+     
      df= pd.read_csv(file_uploaded2, encoding='unicode_escape')
 
-     return df,Map
+     return df
         #API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
         #st.text_input("Enter users current address",  )
         #st.text_input("Enter amenities address", )
