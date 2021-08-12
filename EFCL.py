@@ -88,8 +88,8 @@ def Directions():
 
                         #if ratio == "Street Address":
                                 #st.write(StreetAd)
-                        if ratio == "Mailling Address":
-                                st.write(MailAd)
+                        #if ratio == "Mailling Address":
+                        st.write(MailAd)
                 else:
                         st.write("There is no file uploaded")
 
