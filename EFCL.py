@@ -70,7 +70,7 @@ if __name__== "__main__":
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
 
-        if st.button("Map",key="1"):
+        if Map:
                 df= pd.read_csv('League Addresses')
                 League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
