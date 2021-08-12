@@ -48,7 +48,7 @@ if __name__== "__main__":
             st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
             
-            while file_uploaded is not None:
+            if file_uploaded is not None:
                 
                         
                 if Qst == "Community League":
