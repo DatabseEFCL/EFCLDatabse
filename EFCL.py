@@ -28,15 +28,16 @@ def loadData(file_uploaded):
     return df
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map(file_uploader2):
+def map(file_uploaded2):
     
      df= pd.read_csv(file_uploaded2)
+     return df
         
         #API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
         #st.text_input("Enter users current address",  )
         #st.text_input("Enter amenities address", )
 
-      return df
+        
 
 if __name__== "__main__":
         if file_uploaded:
@@ -78,9 +79,7 @@ if __name__== "__main__":
                 file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='a')
                 map(file_uploaded2)
                 df= map(file_uploaded2)
-                while file_uploaded2 is not None:
-                    map(file_uploaded2)
-                    df= map(file_uploaded2)
+                if file_uploaded2 is not None:
                     League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
         while file_uploaded is None:
