@@ -31,13 +31,14 @@ def map(file_uploaded2):
      
      df= pd.read_csv(file_uploaded2, encoding='unicode_escape')
      st.write("There is no file uploaded")
+     st.write("Address file has been uploaded !")
      return df
         #API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
         #st.text_input("Enter users current address",  )
         #st.text_input("Enter amenities address", )
 
 def database():
-        file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
+        file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a') #upload clog csv file
 
         #function to view the databse
         if file_uploaded:
@@ -77,10 +78,13 @@ def database():
 def Directions():
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
 
+
+
         if file_uploaded2 is not None:
                 df= map(file_uploaded2) #calls map funciton 
 
                 if file_uploaded2 :
+                        st.write("Address file has been uploaded !")
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
                         MailAd= df["Mailing Address"].loc[df['Community League']== League]
                         StreetAd= df["Street Address"].loc[df['Community League']== League]
