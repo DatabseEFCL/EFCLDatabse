@@ -11,7 +11,7 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 
 #File upload
-file_uploaded= st.sidebar.file_uploader(label= "Upload your csv file.", type= ['csv'], key='a')
+file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
 file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
 
 Map= st.sidebar.button("Map")
@@ -80,6 +80,4 @@ if __name__== "__main__":
                 df= map(file_uploaded2)
                 if file_uploaded2 is not None:
                         st.write(df)
-                        League= st.sidebar.selectbox("Select Community League :", list(df.head("Community League")),key='z')
-               
-        
+                        League= st.sidebar.selectbox("Select Community League :", list(df["Community League"]),key='z')
