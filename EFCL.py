@@ -10,10 +10,9 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
-#File upload
 
 
-Map_button= st.radio("Use button to access the map",['Map'], key='8')
+
 
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
@@ -77,7 +76,7 @@ def database():
 
 def Directions():
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
-        if Map_button:
+        if file_uploaded2 is not None:
                 map(file_uploaded2)
 
                 if file_uploaded2 is not None:
