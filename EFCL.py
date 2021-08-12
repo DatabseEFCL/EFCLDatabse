@@ -82,4 +82,4 @@ if __name__== "__main__":
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
                         MailAd= df["Mailing Address"].loc[df['Community League']== League]
                         StreetAd= df["Street Address"].loc[df['Community League']== League]
-                        st.selectbox(MailAd,StreetAd, key='y')
+                        st.selectbox("Mailing Addrress","Street Address", key='y')
