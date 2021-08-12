@@ -76,11 +76,9 @@ if __name__== "__main__":
 
         if Map:
                 file_uploaded2= st.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
-              
-                if file_uploaded2 is not None:
-                    map(file_uploaded2)
-                    df= map(file_uploaded2)
-                    League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
+                map(file_uploaded2)
+                df= map(file_uploaded2)
+                League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
         if file_uploaded is None:
                 st.write("There is no csv file")
