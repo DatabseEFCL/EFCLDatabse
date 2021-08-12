@@ -28,22 +28,26 @@ def loadData(file_uploaded):
     return df
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map():
+def map(file_uploader2):
+    
+     df= pd.read_csv(file_uploaded2)
+        
+        #API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
+        #st.text_input("Enter users current address",  )
+        #st.text_input("Enter amenities address", )
 
-        API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
-        st.text_input("Enter users current address",  )
-        st.text_input("Enter amenities address", )
-
-        return API_file
+      return df
 
 if __name__== "__main__":
- 
-        if file_uploaded is not None:
-                loadData(file_uploaded)
-                df= loadData(file_uploaded)
-                st.write("Your file has been uploaded !")
-                st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-                Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+        if file_uploaded:
+            loadData(file_uploaded)
+            df= loadData(file_uploaded)
+            st.write("Your file has been uploaded !")
+            st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
+            Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+            
+            while file_uploaded is not None:
+                
                 
                         
                 if Qst == "Community League":
@@ -72,8 +76,12 @@ if __name__== "__main__":
 
         if Map:
                 file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='a')
-                df= pd.read_csv('EFCLDatabse/League Addresses.csv')
-                League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
+                map(file_uploaded2)
+                df= map(file_uploaded2)
+                while file_uploaded2 is not None:
+                    map(file_uploaded2)
+                    df= map(file_uploaded2)
+                    League= st.selectbox("Select Community League :", list(df.columns("Community League")),key='z')
                
-        if file_uploaded is None:
+        while file_uploaded is None:
                 st.write("There is no csv file")
