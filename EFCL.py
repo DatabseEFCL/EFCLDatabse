@@ -9,12 +9,12 @@ st.title(""" EFCL CLOG Database """)
 st.text("Please upload your csv file, then select topic you want to search by.")
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
-st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset"))
+SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 #File upload
 file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a')
 file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x')
 
-Map= st.radio("Use button to access the map",['Map'], key='8')
+Map_button= st.radio("Use button to access the map",['Map'], key='8')
 
 
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
@@ -31,15 +31,14 @@ def loadData(file_uploaded):
 def map(file_uploaded2):
      
      df= pd.read_csv(file_uploaded2, encoding='unicode_escape')
-
+     st.write("There is no file uploaded")
      return df
         #API_file = 'AIzaSyBDWEszjQFQZ7JT-D9HW-e_Hi5zNEcUFus'
         #st.text_input("Enter users current address",  )
         #st.text_input("Enter amenities address", )
 
-        
-
-if __name__== "__main__":
+def database(file_uploaded):
+        #function to view the databse
         if file_uploaded:
             loadData(file_uploaded)
             df= loadData(file_uploaded)
@@ -73,11 +72,12 @@ if __name__== "__main__":
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
+        
 
-        if Map:
-                
+def Directions(file_uploaded2):
+        if Map_button:
                 map(file_uploaded2)
-             
+
                 if file_uploaded2 is not None:
                         df= map(file_uploaded2)
                         League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
@@ -89,3 +89,14 @@ if __name__== "__main__":
                                 st.write(StreetAd)
                         if ratio == "Mailling Address":
                                 st.write(MailAd)
+                else:
+                        st.write("There is no file uploaded")
+
+if __name__== "__main__":
+        if SideOption == "Dataset":
+
+                database(file_uploaded)
+
+        if SideOption == "Map":
+                Directions(file_uploaded2)
+        
