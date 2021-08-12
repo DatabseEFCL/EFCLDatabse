@@ -86,8 +86,8 @@ def Directions():
                         StreetAd= df["Street Address"].loc[df['Community League']== League]
                         ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
 
-                        if ratio == "Street Address":
-                                st.write(StreetAd)
+                        #if ratio == "Street Address":
+                                #st.write(StreetAd)
                         if ratio == "Mailling Address":
                                 st.write(MailAd)
                 else:
