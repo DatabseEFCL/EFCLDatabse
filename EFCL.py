@@ -10,6 +10,7 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
+ gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
 
 
 
@@ -75,7 +76,7 @@ def database():
 def Directions():
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
         # Requires API key
-        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+        
 
 
         if file_uploaded2 is not None:
