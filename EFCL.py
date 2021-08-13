@@ -11,7 +11,7 @@ st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
-def import_or_install(googlemaps):
+def import_or_install():
         try:
                 import googlemaps
         except ModuleNotFoundError:
