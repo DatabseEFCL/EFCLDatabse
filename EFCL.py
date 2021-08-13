@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import googlemaps
 import pip 
 
 
@@ -118,5 +117,6 @@ if __name__== "__main__":
                 database()
 
         if SideOption == "Map": #if map is selected then addresses and directions will be shown.
+                import_or_install(googlemaps)
                 Directions()
         
