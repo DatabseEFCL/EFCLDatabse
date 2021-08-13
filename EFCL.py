@@ -10,7 +10,7 @@ st.text("Please upload your csv file, then select topic you want to search by.")
 st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
- gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
 
 
 
