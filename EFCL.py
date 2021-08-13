@@ -117,6 +117,6 @@ if __name__== "__main__":
                 database()
 
         if SideOption == "Map": #if map is selected then addresses and directions will be shown.
-                import_or_install(googlemaps)
+                import_or_install()
                 Directions()
         
