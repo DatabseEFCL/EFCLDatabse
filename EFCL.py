@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import googlemaps
+import pip 
 
 
 #title
@@ -11,7 +12,11 @@ st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
-
+def import_or_install(googlemaps):
+        try:
+                import googlemaps
+        except ModuleNotFoundError:
+                pip.main(['install',googlemaps])
 
 #chaching/saving CLOG data
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
