@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from googlemaps import Client as GoogleMaps
+import googlemaps
 
 
 #title
@@ -75,7 +75,7 @@ def database():
 def Directions():
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
         # Requires API key
-        gmaps = GoogleMaps(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
 
 
         if file_uploaded2 is not None:
