@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import googlemaps
-
+from googlemaps import *
 
 #title
 st.title(""" EFCL CLOG Database """)
