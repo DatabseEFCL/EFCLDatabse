@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import pip 
+from googlemaps import Client as GoogleMaps
 
 
 #title
@@ -11,11 +11,7 @@ st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
-def import_or_install():
-        try:
-                import googlemaps
-        except ModuleNotFoundError:
-                pip.main(['install',googlemaps])
+
 
 #chaching/saving CLOG data
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
@@ -79,7 +75,7 @@ def database():
 def Directions():
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
         # Requires API key
-        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+        gmaps = GoogleMaps(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
 
 
         if file_uploaded2 is not None:
@@ -117,6 +113,5 @@ if __name__== "__main__":
                 database()
 
         if SideOption == "Map": #if map is selected then addresses and directions will be shown.
-                import_or_install()
                 Directions()
         
