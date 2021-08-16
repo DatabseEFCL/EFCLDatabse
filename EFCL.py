@@ -7,7 +7,7 @@ import googlemaps
 
 #title and subheader
 st.markdown("<h1 style='text-align: center; color: #517F2E;'>EFCL CLOG Database Application</h1>", unsafe_allow_html=True)
-st.markdown("<p1 style='text-align: left; color: #0B114D;'>Please upload your csv file, then select topic you want to search by.</p1>", unsafe_allow_html=True)
+st.markdown("<p1 style='text-align: centre; color: #0B114D;'>Please upload your csv file, then select topic you want to search by.</p1>", unsafe_allow_html=True)
 
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
