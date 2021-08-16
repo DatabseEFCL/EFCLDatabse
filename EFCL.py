@@ -6,7 +6,7 @@ import googlemaps
 
 
 #title and subheader
-st.title("EFCL CLOG Database Application", unsafe_allow_html=True)
+st.title("EFCL CLOG Database Application")
 st.write("Please upload your csv file, then select topic you want to search by.")
 
 #Sidebar
