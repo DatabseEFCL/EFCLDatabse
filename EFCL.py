@@ -106,8 +106,8 @@ def Directions():
                                 user_input2= st.text_input("Please input user address.","",key="h")
                                 my_dist2 = gmaps.distance_matrix(user_input2,MailAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
                                 my_dur2 = gmaps.distance_matrix(user_input2, MailAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
-                                st.write("The distance is ",my_dist2,".")#destinaton output 
-                                st.write("The duration is ",my_dur2,".") #duration output
+                                st.write("The distance is: ",my_dist2)#destinaton output 
+                                st.write("The duration is: ",my_dur2) #duration output
                 else:
                         st.write("There is no file uploaded.")
 
