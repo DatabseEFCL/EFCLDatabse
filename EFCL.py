@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import googlemaps
+import subprocess
+import sys
 
 
 
@@ -13,7 +14,11 @@ st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
+package= "reqirements.txt" #requirment txt that contains code 
 
+@st.cache(suppress_st_warning=True,allow_output_mutation=True)
+def install(package):
+    subprocess.check_call([sys.executable, "pip", "install", "-r", package])
 
 
 
@@ -96,22 +101,23 @@ def Directions():
                         if ratio == "Street Address":
                                 destination_input= st.write(StreetAd)
                                 user_input= st.text_input("Please input user address.","",key="g")
-                                my_dist = gmaps.distance_matrix(user_input,destination_input)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
-                                my_dur = gmaps.distance_matrix(user_input, destination_input)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
+                                my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
+                                my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
                                 st.write("The distance is ",my_dist) #destinaton output 
                                 st.write("The duration is ",my_dur) #duration output
 
                         if ratio == "Mailing Address":
                                 destination_input2= st.write(MailAd)
                                 user_input2= st.text_input("Please input user address.","",key="h")
-                                my_dist2 = gmaps.distance_matrix(user_input2,destination_input2)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
-                                my_dur2 = gmaps.distance_matrix(user_input2, destination_input2)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
+                                my_dist2 = gmaps.distance_matrix(user_input2,MailAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
+                                my_dur2 = gmaps.distance_matrix(user_input2, MailAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
                                 st.write("The distance is ",my_dist2)#destinaton output 
                                 st.write("The duration is ",my_dur2) #duration output
                 else:
                         st.write("There is no file uploaded")
 
 if __name__== "__main__":
+        install(package)
 
         if SideOption == "Dataset": #if sidebar option is Dataset then the clog databse function will run.
 
