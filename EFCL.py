@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import subprocess
-import sys
+import googlemaps
 
 
 
@@ -14,11 +13,7 @@ st.sidebar.subheader("Visualization Settings")
 SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
-package= "reqirements.txt" #requirment txt that contains code 
 
-@st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def install(package):
-    subprocess.check_call([sys.executable, "pip", "install", "-r", package])
 
 
 
@@ -82,7 +77,6 @@ def database():
         
 
 def Directions():
-        import googlemaps
         file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
         # Requires API key
         gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
@@ -118,7 +112,6 @@ def Directions():
                         st.write("There is no file uploaded")
 
 if __name__== "__main__":
-        install(package)
 
         if SideOption == "Dataset": #if sidebar option is Dataset then the clog databse function will run.
 
