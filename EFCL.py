@@ -86,14 +86,14 @@ def Directions():
                 df= map(file_uploaded2) #calls map funciton 
 
                 if file_uploaded2 :
-                        st.write("Address file has been uploaded !")
-                        League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
-                        MailAd= df["Mailing Address"].loc[df['Community League']== League]
-                        StreetAd= df["Street Address"].loc[df['Community League']== League]
+                    
+                    st.write("Address file has been uploaded !")
+                    League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
+                    MailAd= df["Mailing Address"].loc[df['Community League']== League]
+                    StreetAd= df["Street Address"].loc[df['Community League']== League]
 
-                        ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
-
-                       if ratio == "Street Address":
+                    ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
+                    if ratio == "Street Address":
                                 st.write(StreetAd)
                                 user_input= st.text_input("Please input user address.","",key="g")
                                 my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
@@ -101,14 +101,13 @@ def Directions():
                                 st.write("The distance is ",my_dist) #destinaton output 
                                 st.write("The duration is ",my_dur) #duration output
 
-                        if ratio == "Mailing Address":
+                    if ratio == "Mailing Address":
                                 st.write(MailAd)
                                 user_input2= st.text_input("Please input user address.","",key="h")
                                 my_dist2 = gmaps.distance_matrix(user_input2,MailAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
                                 my_dur2 = gmaps.distance_matrix(user_input2, MailAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
                                 st.write("The distance is ",my_dist2)#destinaton output 
                                 st.write("The duration is ",my_dur2) #duration output
-                else:
                 else:
                         st.write("There is no file uploaded")
 
