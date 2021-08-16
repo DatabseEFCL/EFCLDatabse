@@ -94,7 +94,7 @@ def Directions():
 
                     ratio = st.radio("Select the type of Addrress",['Street Address','Mailing Address'], key='y')
                     if ratio == "Street Address":
-                                st.write(StreetAd)
+                                #st.write(StreetAd)
                                 user_input= st.text_input("Please input user address.","",key="g")
                                 my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
                                 my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
@@ -102,14 +102,14 @@ def Directions():
                                 st.write("The duration is ",my_dur) #duration output
 
                     if ratio == "Mailing Address":
-                                st.write(MailAd)
+                                #st.write(MailAd)
                                 user_input2= st.text_input("Please input user address.","",key="h")
                                 my_dist2 = gmaps.distance_matrix(user_input2,MailAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
                                 my_dur2 = gmaps.distance_matrix(user_input2, MailAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
-                                st.write("The distance is ",my_dist2)#destinaton output 
-                                st.write("The duration is ",my_dur2) #duration output
+                                st.write("The distance is ",my_dist2,".")#destinaton output 
+                                st.write("The duration is ",my_dur2,".") #duration output
                 else:
-                        st.write("There is no file uploaded")
+                        st.write("There is no file uploaded.")
 
 if __name__== "__main__":
 
