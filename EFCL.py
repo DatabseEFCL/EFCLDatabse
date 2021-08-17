@@ -35,7 +35,7 @@ def database(file_uploaded):
             df= loadData(file_uploaded)
             st.write("Your file has been uploaded !")
             st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-            Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
+            Qst= st.selectbox("Choose the field you want to search by:",list(df.head(4)),key = "1")
             
             if file_uploaded is not None:
                 
