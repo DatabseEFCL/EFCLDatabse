@@ -93,7 +93,7 @@ def Directions(file_uploaded):
 
         StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
        
-        Comm= df["Community League"].loc[df['Program']== StreetAd] #finds the community leagues of the filtered addresses
+        Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
 
         #st.write(StreetAd)
         user_input= st.text_input("Please input user address." , key="g")
