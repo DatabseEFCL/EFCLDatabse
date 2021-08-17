@@ -102,7 +102,7 @@ def Directions(file_uploaded):
         my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
 
         #if my_dist2 <= 1500:
-        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", values, " away. The duration is: ", my_dur,".\n") #destinaton output 
+        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", my_dist, " away. The duration is: ", my_dur,".\n") #destinaton output 
         
                    
                 
