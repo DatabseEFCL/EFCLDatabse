@@ -37,8 +37,6 @@ def database(file_uploaded):
             st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             Qst= st.selectbox("Choose the field you want to search by:",list(df.head(),key = "1")
             
-            if file_uploaded is not None:
-                
                         
                 if Qst == "Community League": #outout if the selected field is community league
                         Com=df['Community League'].sort_values().drop_duplicates()
