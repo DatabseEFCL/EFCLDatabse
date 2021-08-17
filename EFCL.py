@@ -11,7 +11,6 @@ st.write("Please upload your csv file, then select topic you want to search by."
 
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
-SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
 
 
 #chaching/saving CLOG data
@@ -71,7 +70,7 @@ def database():
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
 
-        if Qst == "Address":#outout if the selected field is Delivery 
+        if Qst == "Address":#outout if the selected field is Address 
                         Directions(file_uploaded)
                 
         else:
@@ -86,15 +85,26 @@ def Directions(file_uploaded):
         # Requires API key
         gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
 
-        League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
-        StreetAd= df["Address"].loc[df['Community League']== League]
-        #st.write(StreetAd)
-        user_input= st.text_input("Please input user address.","",key="g")
-        my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
-        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration\
-        st.write("The distance is ",my_dist) #destinaton output 
-        st.write("The duration is ",my_dur) #duration output
+        
+        Program2 = df["Program"].drop_duplicates().sort_values()
 
+
+        Program= st.selectbox("Select your desired program:", list(Program2),key='z')
+
+        StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
+       
+        Comm= df["Communnity League"].loc[df['Program']== StreetAd] #finds the community leagues of the filtered addresses
+
+        #st.write(StreetAd)
+        user_input= st.text_input("Please input user address." , key="g")
+        my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
+        my_dist2 = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["value"] #
+        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
+
+        for values in my_dist:
+                if my_dist2 >= 1000 and my_dist2 < 15000:
+                        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", values, " away. The duration is: ", my_dur,".\n") #destinaton output 
+        
                    
                 
 
