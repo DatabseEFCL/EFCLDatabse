@@ -11,8 +11,7 @@ st.write("Please upload your csv file, then select topic you want to search by."
 
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
-SideOption= st.sidebar.selectbox("Select the fields to use",options=("Map","Dataset")) #choose between Map or Data
-
+file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a') #upload clog csv file
 
 #chaching/saving CLOG data
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
@@ -20,23 +19,15 @@ def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
     st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-
+    gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
-    return df
+    return df,gmaps
 
-#caching address 
-@st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map(file_uploaded2):
-     
-     df= pd.read_csv(file_uploaded2, encoding='unicode_escape')
-     st.write("There is no file uploaded")
-     st.write("Address file has been uploaded !")
-     return df
        
 
-def database():
-        file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a') #upload clog csv file
+def database(file_uploaded):
+        
 
         #function to view the databse
         if file_uploaded:
@@ -71,39 +62,23 @@ def database():
                         Program= P_lower.loc[df['Delivery']== D_ch] 
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
-        
 
-def Directions():
-        file_uploaded2= st.sidebar.file_uploader(label= "Upload your 'League Addresses' csv file.", type= ['csv'], key='x') #upload address file
-        # Requires API key
-        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
-
-
-        if file_uploaded2 is not None:
-                df= map(file_uploaded2) #calls map funciton 
-
-                if file_uploaded2 :
-                    
-                    st.write("Address file has been uploaded !")
-                    League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
-                    StreetAd= df["Street Address"].loc[df['Community League']== League]
-                    #st.write(StreetAd)
-                    user_input= st.text_input("Please input user address.","",key="g")
-                    my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
-                    my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration\
-                    st.write("The distance is ",my_dist) #destinaton output 
-                    st.write("The duration is ",my_dur) #duration output
-
-                   
+                if Qst == "Address":#outout if the selected field is Delivery 
+                        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+                        st.write("Address file has been uploaded !")
+                        League= st.selectbox("Select Community League :", list(df["Community League"]),key='z')
+                        StreetAd= df["Street Address"].loc[df['Community League']== League]
+                        #st.write(StreetAd)
+                        user_input= st.text_input("Please input user address.","",key="g")
+                        my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
+                        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration\
+                        st.write("The distance is ",my_dist) #destinaton output 
+                        st.write("The duration is ",my_dur) #duration output
+                
                 else:
                         st.write("There is no file uploaded.")
 
 if __name__== "__main__":
+        database(file_uploaded)
 
-        if SideOption == "Dataset": #if sidebar option is Dataset then the clog databse function will run.
-
-                database()
-
-        if SideOption == "Map": #if map is selected then addresses and directions will be shown.
-                Directions()
         
