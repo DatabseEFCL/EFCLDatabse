@@ -39,32 +39,31 @@ def database():
         file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a') #upload clog csv file
 
         #function to view the databse
-        if file_uploaded:
+        global Qst 
+        global df
+
+        if file_uploaded is not None:
            
             df= loadData(file_uploaded)
             st.write("Your file has been uploaded !")
             st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-            Qst= st.selectbox("Choose the field you want to search by:",list(df.head(),key = "1")
+            Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
             
-            if file_uploaded is not None:
-                
-                        
-                if Qst == "Community League": #outout if the selected field is community league
+        if Qst == "Community League": #outout if the selected field is community league
                         Com=df['Community League'].sort_values().drop_duplicates()
                         Com_choice= st.selectbox("Select the Community League:",list(Com),key = "2")
                         Program= df["Program"].loc[df['Community League']== Com_choice] 
                         Delivery = df["Delivery"].loc[df['Community League']== Com_choice]
                         st.table(pd.concat([Program, Delivery], axis=1))
-                        
-                        
-                if Qst == "Program":#outout if the selected field is Program
+
+        if Qst == "Program":#outout if the selected field is Program
                         Program = df["Program"].drop_duplicates().sort_values()
                         Program_ch= st.selectbox("Select the Program:",list(Program),key = '3')
                         Community= df["Community League"].loc[df['Program']== Program_ch]
                         Delivery = df["Delivery"].loc[df['Program']== Program_ch]
                         st.table(pd.concat([Community, Delivery], axis=1))
                 
-                if Qst == "Delivery":#outout if the selected field is Delivery 
+        if Qst == "Delivery":#outout if the selected field is Delivery 
                         Delivery= df["Delivery"].drop_duplicates().sort_values()
                         D_ch= st.selectbox("Select the method of program delivery:",list(Delivery), key = '4')
                         P_lower= df["Program"].astype(str).str.lower()
@@ -72,11 +71,11 @@ def database():
                         Community= df["Community League"].loc[df['Delivery']== D_ch]
                         st.table(pd.concat([Program, Community], axis=1))
 
-                if Qst == "Address":#outout if the selected field is Delivery 
+        if Qst == "Address":#outout if the selected field is Delivery 
                         Directions(file_uploaded)
                 
-                else:
-                        st.write("There is no file uploaded.")
+        else:
+                st.write("There is no file uploaded.")
         
 
 def Directions(file_uploaded):
