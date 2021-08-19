@@ -95,7 +95,7 @@ def Directions(file_uploaded):
        
         Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
 
-        indexTable= pd.concat([Comm,StreetAd],axis=2)
+        indexTable= pd.concat([Comm,StreetAd],axis=1)
 
         Table= indexTable.loc[df['Program']== Program] 
         st.write(Table)
