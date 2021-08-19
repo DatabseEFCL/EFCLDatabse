@@ -112,6 +112,7 @@ def Directions(file_uploaded):
 
             else:
                 dest += location + '|'
+                destination.append(dest)
                 counter +=1
         #st.write(counter)
         st.write(destination)
