@@ -131,10 +131,10 @@ def Directions(file_uploaded):
                                 results.append(d, small_distance[i], time[i])
         
         '''
-        results_df = pd.DataFrame(results, columns=['destination', 'driving distance [km]', 'driving time [s]'])
+        #results_df = pd.DataFrame(results, columns=['destination', 'driving distance [km]', 'driving time [s]'])
 
 
-        st.table(results_df)
+        #st.table(results_df)
 
 
 
