@@ -95,17 +95,19 @@ def Directions(file_uploaded):
        
         Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
 
-        #st.write(StreetAd)
-        user_input= st.text_input("Please input user address." , key="g")
-        my_dist = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["text"] # api calling distance
-        my_dist2 = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["value"] #
-        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"]# api calling duration
+        indexTable= pd.concat(Comm,StreetAd)
 
-        #if my_dist2 <= 1500:
-        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", my_dist, " away. The duration is: ", my_dur,".\n") #destinaton output 
+        #st.write(StreetAd)
+        user_input= st.text_input("Please input user address." , key="g") #orgin 
+        my_dist = gmaps.distance_matrix(user_input,indexTable)['rows'][0]['elements'][0]["distance"]["text"] # destination in distance 
+        my_dist2 = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["value"] 
+        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"] #duration
+
+        for values in my_dist:
+                if my_dist2 >= 1000 and my_dist2 < 15000:
+                        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", values, " away. The duration is: ", my_dur,".\n") #destinaton output 
         
                    
-                
 
 if __name__== "__main__":
 
