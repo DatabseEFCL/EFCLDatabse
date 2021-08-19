@@ -95,22 +95,60 @@ def Directions(file_uploaded):
        
         Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
 
-        indexTable= pd.concat([Comm,StreetAd],axis=1)
+        indexTable= pd.concat(Comm,StreetAd)
 
         Table= indexTable.loc[df['Program']== Program] 
         st.write(Table)
 
         #st.write(StreetAd)
         user_input= st.text_input("Please input user address." , key="g") #orgin 
-       # my_dist = gmaps.distance_matrix(user_input,indexTable)['rows'][0]['elements'][0]["distance"]["text"] # destination in distance 
-       # my_dist2 = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["value"] 
-        #my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"] #duration
 
-        #for values in my_dist:
-           #     if my_dist2 >= 1000 or my_dist2 < 15000:
-            #            st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", values, " away. The duration is: ", my_dur,".\n") #destinaton output 
+        '''
+        my_dist = gmaps.distance_matrix(user_input,indexTable)['rows'][0]['elements'][0]["distance"]["text"] # destination in distance 
+        my_dist2 = gmaps.distance_matrix(user_input,StreetAd)['rows'][0]['elements'][0]["distance"]["value"] 
+        my_dur = gmaps.distance_matrix(user_input, StreetAd)['rows'][0]['elements'][0]["duration"]["text"] #duration
+
+        for values in my_dist:
+                if my_dist2 >= 1000 and my_dist2 < 15000:
+                        st.write("The closest Community League for ",Program, " is ",Comm,"and it is ", values, " away. The duration is: ", my_dur,".\n") #destinaton output 
         
-                   
+        '''   
+        results=[]
+        counter = 0  
+        destination = []
+        dest=''
+        for location in Comm:
+                for d in StreetAd:
+                        if counter > 24:
+                                destination.append(dest)
+                                dest=''
+                                counter= 0
+                
+                        dest += location + ' ' + d  + '|'
+                        counter +=1
+
+                        small_distance=[]
+                        time= []
+
+                        for dest_string in destination:
+                                my_dist = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["text"]
+                                #my_dist2 = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["value"] 
+                                my_dur = gmaps.distance_matrix(user_input, dest_string )['rows'][0]['elements'][0]["duration"]["text"] #duration
+                                small_distance.append(my_dist)
+                                time.append(my_dur)
+
+        
+                        for i in range(len(small_distance)):
+
+                                results.append(d, small_distance[i], time[i])
+        
+        
+        results_df = pd.DataFrame(results, columns=['destination', 'driving distance [km]', 'driving time [s]'])
+
+
+        st.table(results_df)
+
+
 
 if __name__== "__main__":
 
