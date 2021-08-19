@@ -95,10 +95,7 @@ def Directions(file_uploaded):
        
         Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
 
-        indexTable= pd.concat(Comm,StreetAd)
-
-        Table= indexTable.loc[df['Program']== Program] 
-        st.write(Table)
+        
 
         #st.write(StreetAd)
         user_input= st.text_input("Please input user address." , key="g") #orgin 
