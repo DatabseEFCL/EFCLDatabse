@@ -103,15 +103,16 @@ def Directions(file_uploaded):
         counter = 0  
         destination = []
         dest=''
-        for location in Comm:
-                for d in StreetAd:
-                        if counter > 24:
-                                destination.append(dest)
-                                dest=''
-                                counter= 0
+        for location in StreetAd:
+                 d = df["Community League"].loc[df['Program']== location]
+                 if counter > 24:
+                        
+                        destination.append(dest)
+                        dest=''
+                        counter= 0
                 
-                        dest += location + ' ' + d  + '|'
-                        counter +=1
+                 dest += location + ' ' + d  + '|'
+                 counter +=1
         st.write(counter)
         st.write(destination)
         
