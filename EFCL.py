@@ -97,6 +97,9 @@ def Directions(file_uploaded):
 
         indexTable= pd.concat(Comm,StreetAd)
 
+        Table= indexTable.loc[df['Program']== Program] 
+        st.write(Table)
+
         #st.write(StreetAd)
         user_input= st.text_input("Please input user address." , key="g") #orgin 
         my_dist = gmaps.distance_matrix(user_input,indexTable)['rows'][0]['elements'][0]["distance"]["text"] # destination in distance 
