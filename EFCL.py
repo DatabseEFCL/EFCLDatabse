@@ -99,15 +99,12 @@ def Directions(file_uploaded):
         user_input= st.text_input("Please input user address." , key="g") #orgin 
 
        
-        
         results=[]
         counter = 0  
         destination = []
         dest=''
         for location in Comm:
-                st.write(location)
                 for d in StreetAd:
-                        st.write(d)
                         if counter > 24:
                                 destination.append(dest)
                                 dest=''
@@ -115,10 +112,12 @@ def Directions(file_uploaded):
                 
                         dest += location + ' ' + d  + '|'
                         counter +=1
-
+        st.write(counter)
+        st.write(destination)
+        
+'''
                         small_distance=[]
                         time= []
-
                         for dest_string in destination:
                                 my_dist = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["text"]
                                 #my_dist2 = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["value"] 
@@ -131,7 +130,7 @@ def Directions(file_uploaded):
 
                                 results.append(d, small_distance[i], time[i])
         
-        
+        '''
         results_df = pd.DataFrame(results, columns=['destination', 'driving distance [km]', 'driving time [s]'])
 
 
