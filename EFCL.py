@@ -113,8 +113,8 @@ def Directions(file_uploaded):
                 
                  dest += location + ' ' + d  + '|'
                  counter +=1
-        st.write(counter)
-        st.write(destination)
+        #st.write(counter)
+        st.table(destination)
         
 '''
                         small_distance=[]
