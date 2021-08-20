@@ -85,7 +85,9 @@ def Directions(file_uploaded):
         Program= st.selectbox("Select your desired program:", list(Program2),key='z')
 
         StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
-     
+       
+      
+        
         user_input= st.text_input("Please input user address." , key="g") #orgin 
         
         for location in StreetAd:
@@ -98,32 +100,50 @@ def Directions(file_uploaded):
                 
                  Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location(s) for within 0.5 km:")
-                 st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
+                 
+
+                 st.write(Comm," Address: ", location)
+                 st.write("Duration:",my_dur,"Distance: ", my_dist2)
                  break
             
             if my_dist <= 1000:
                 
                  Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location(s) for within 1 km:")
-                 st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
+                 
+        
+                 st.write(Comm," Address: ", location)
+                 st.write("Duration:",my_dur,"Distance: ", my_dist2)
                  break
 
             if my_dist <= 10000:
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location(s) for within 10 km:")
-                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
+
+                st.write(Comm," Address: ", location)
+                st.write("Duration:",my_dur,"Distance: ", my_dist2)
 
                 break 
 
             if my_dist <= 15000:
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location(s) for within 15 km:")
-                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
-
+                
+                st.write(Comm," Address: ", location)
+                st.write("Duration:",my_dur,"Distance: ", my_dist2)
                 break
 
+            
            
-          
+                 
+            
+        
+        
+            
+        st.write(counter)
+        st.write(destination)
+ 
+
 
 if __name__== "__main__":
 
