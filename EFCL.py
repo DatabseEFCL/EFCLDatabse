@@ -113,12 +113,13 @@ def Directions(file_uploaded):
           
             dest += location + '|'
             counter +=1
-            
-        if counter < 24:
             user_input= st.text_input("Please input user address." , key="g") #orgin 
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
             st.write('Distace: ',my_dist,'\n','Time: ', my_dur)
+            
+        
+            
         st.write(counter)
         st.write(destination)
         
