@@ -143,13 +143,7 @@ def Directions(file_uploaded):
 
                 break
 
-            else:
-                Comm= df["Community League"].loc[df['Address']== location]
-                st.write("The only available location(s) are:")
-                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
-                
-                break
-                  
+           
                  
             
         
