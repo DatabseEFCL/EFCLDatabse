@@ -89,6 +89,8 @@ def Directions(file_uploaded):
       
         
         user_input= st.text_input("Please input user address." , key="g") #orgin 
+
+        st.write("The radius of distance from user address is 15 km.")
         
         for location in StreetAd:
             
@@ -130,7 +132,7 @@ def Directions(file_uploaded):
 
             if my_dist <= 15000:
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
-                st.write("The nearest location within 15 km:")
+                st.write("The nearest locationwithin 15 km:")
                 
                 st.write(Comm," Address: ", location)
                 st.write("Duration:",my_dur)
