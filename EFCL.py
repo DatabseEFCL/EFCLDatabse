@@ -19,11 +19,7 @@ def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
     st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-    st.write("The nearest location(s) for within 1km:")
-    st.write("The nearest location(s) for within 10km:")
-    st.write("The nearest location(s) for within 15km:")
-    st.write("The only available location(s) are:")
-    st.write(Comm," Address: ", location,", within:",my_dur)
+    
     
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
