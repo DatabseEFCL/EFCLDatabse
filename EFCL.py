@@ -117,27 +117,27 @@ def Directions(file_uploaded):
 
             if my_dist <= 500:
                 
-                 Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
+                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location(s) for within 0.5 km:")
                  st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
                  break
             
             if my_dist <= 1000:
                 
-                 Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
+                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location(s) for within 1 km:")
                  st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
                  break
 
             if my_dist <= 10000:
-                Comm= df["Community League"].loc[df['Address']== location]
+                Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location(s) for within 10 km:")
                 st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
 
                 break 
 
             if my_dist <= 15000:
-                Comm= df["Community League"].loc[df['Address']== location]
+                Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location(s) for within 15 km:")
                 st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
 
