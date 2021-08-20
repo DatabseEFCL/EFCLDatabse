@@ -109,30 +109,50 @@ def Directions(file_uploaded):
             dest += location + '|'
             counter +=1
             
-            Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
+           
             
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["value"]# duration
-            
+            my_dist2 = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]# duration
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
-            
-          
-            
-        if my_dist <= 1000:
-            km = my_dist/1000
-            st.write("The nearest location(s) for within 1km:")
-            st.write(Comm," Address: ", location,", within:",my_dur)
-        if my_dist <= 10000:
-            st.write("The nearest location(s) for within 10km:")
-            st.write(Comm," Address: ", location,", within:",my_dur)
-        if my_dist <= 15000:
-            st.write("The nearest location(s) for within 15km:")
-            st.write(Comm," Address: ", location,", within:",my_dur)
-        else:
-            st.write("The only available location(s) are:")
-            st.write(Comm," Address: ", location,", within:",my_dur)
+
+            if my_dist <= 500:
                 
+                 Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
+                 st.write("The nearest location(s) for within 0.5 km:")
+                 st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
+                 break
+            
+            if my_dist <= 1000:
                 
-               
+                 Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
+                 st.write("The nearest location(s) for within 1 km:")
+                 st.write(Comm," Address: ", location,"Duration: ",my_dur, "Distance: ", my_dist2)
+                 break
+
+            if my_dist <= 10000:
+                Comm= df["Community League"].loc[df['Address']== location]
+                st.write("The nearest location(s) for within 10 km:")
+                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
+
+                break 
+
+            if my_dist <= 15000:
+                Comm= df["Community League"].loc[df['Address']== location]
+                st.write("The nearest location(s) for within 15 km:")
+                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
+
+                break
+
+            else:
+                Comm= df["Community League"].loc[df['Address']== location]
+                st.write("The only available location(s) are:")
+                st.write(Comm," Address: ", location,", within:",my_dur,"Distance: ", my_dist2)
+                
+                break
+                  
+                 
+            
+        
         
             
         st.write(counter)
