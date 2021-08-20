@@ -19,20 +19,17 @@ def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
     st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-
+    st.write("The nearest location(s) for within 1km:")
+    st.write("The nearest location(s) for within 10km:")
+    st.write("The nearest location(s) for within 15km:")
+    st.write("The only available location(s) are:")
+    st.write(Comm," Address: ", location,", within:",my_dur)
+    
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
     return df
 
-#caching address 
-@st.cache(suppress_st_warning=True,allow_output_mutation=True)
-def map(file_uploaded2):
-     
-     df= pd.read_csv(file_uploaded2, encoding='unicode_escape')
-     st.write("There is no file uploaded")
-     st.write("Address file has been uploaded !")
-     return df
-       
+
 
 def database():
         file_uploaded= st.sidebar.file_uploader(label= "Upload your 'CLOG' csv file.", type= ['csv'], key='a') #upload clog csv file
@@ -93,7 +90,7 @@ def Directions(file_uploaded):
 
         StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
        
-        Comm= df["Community League"].loc[df['Program']== Program] #finds the community leagues of the filtered addresses
+        
 
         #st.write(StreetAd)
         #user_input= st.text_input("Please input user address." , key="g") #orgin 
@@ -104,6 +101,7 @@ def Directions(file_uploaded):
         destination = []
         dest=''
         user_input= st.text_input("Please input user address." , key="g") #orgin 
+        
         for location in StreetAd:
             if counter > 24:
                     
@@ -114,11 +112,30 @@ def Directions(file_uploaded):
           
             dest += location + '|'
             counter +=1
-           
-            my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]
-            my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
-            st.write('Distace: ',my_dist,'\n','Time: ', my_dur)
             
+            Comm= df["Community League"].loc[df['Program']== location] #finds the community leagues of the filtered addresses
+            
+            my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["value"]# duration
+            
+            my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
+            
+            km = my_dist/1000
+            
+            if my_dist <= 1000:
+                km = my_dist/1000
+                st.write("The nearest location(s) for within 1km:")
+                st.write(Comm," Address: ", location,", within:",my_dur)
+            if my_dist <= 10000:
+                st.write("The nearest location(s) for within 10km:")
+                st.write(Comm," Address: ", location,", within:",my_dur)
+            if my_dist <= 15000:
+                st.write("The nearest location(s) for within 15km:")
+                st.write(Comm," Address: ", location,", within:",my_dur)
+            else:
+                st.write("The only available location(s) are:")
+                st.write(Comm," Address: ", location,", within:",my_dur)
+                
+               
         
             
         st.write(counter)
