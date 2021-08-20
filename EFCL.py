@@ -114,7 +114,7 @@ def Directions(file_uploaded):
             dest += location + '|'
             counter +=1
             
-        if counter >=24:
+        if counter >24:
 
                 my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]
                 my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
