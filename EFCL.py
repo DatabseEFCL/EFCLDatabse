@@ -135,13 +135,7 @@ def Directions(file_uploaded):
 
             
            
-                 
-            
-        
-        
-            
-        st.write(counter)
-        st.write(destination)
+               
  
 
 
