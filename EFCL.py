@@ -109,13 +109,13 @@ def Directions(file_uploaded):
             dest += location + '|'
             counter +=1
             
-            Comm= df["Community League"].loc[df['Program']== location] #finds the community leagues of the filtered addresses
+            Comm= df["Community League"].loc[df['Address']== location] #finds the community leagues of the filtered addresses
             
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["value"]# duration
             
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
             
-            km = my_dist/1000
+          
             
         if my_dist <= 1000:
             km = my_dist/1000
