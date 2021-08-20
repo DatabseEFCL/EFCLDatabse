@@ -119,7 +119,7 @@ def Directions(file_uploaded):
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
             st.write('Distace: ',my_dist,'\n','Time: ', my_dur)
-        #st.write(counter)
+        st.write(counter)
         #st.write(destination)
         
 '''
