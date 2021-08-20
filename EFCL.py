@@ -103,7 +103,7 @@ def Directions(file_uploaded):
                  
 
                  st.write(Comm," Address: ", location)
-                 st.write("Duration:",my_dur,"Distance: ", my_dist2)
+                 st.write("Duration:",my_dur," Distance: ", my_dist2)
                  break
             
             if my_dist <= 1000:
@@ -113,7 +113,7 @@ def Directions(file_uploaded):
                  
         
                  st.write(Comm," Address: ", location)
-                 st.write("Duration:",my_dur,"Distance: ", my_dist2)
+                 st.write("Duration:",my_dur," Distance: ", my_dist2)
                  break
 
             if my_dist <= 10000:
@@ -121,7 +121,7 @@ def Directions(file_uploaded):
                 st.write("The nearest location(s) for within 10 km:")
 
                 st.write(Comm," Address: ", location)
-                st.write("Duration:",my_dur,"Distance: ", my_dist2)
+                st.write("Duration:",my_dur," Distance: ", my_dist2)
 
                 break 
 
@@ -130,13 +130,10 @@ def Directions(file_uploaded):
                 st.write("The nearest location(s) for within 15 km:")
                 
                 st.write(Comm," Address: ", location)
-                st.write("Duration:",my_dur,"Distance: ", my_dist2)
+                st.write("Duration:",my_dur," Distance: ", my_dist2)
                 break
 
             
-           
-               
- 
 
 
 if __name__== "__main__":
