@@ -85,31 +85,10 @@ def Directions(file_uploaded):
         Program= st.selectbox("Select your desired program:", list(Program2),key='z')
 
         StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
-       
-        
-
-        #st.write(StreetAd)
-        #user_input= st.text_input("Please input user address." , key="g") #orgin 
-
-       
-        results=[]
-        counter = 0  
-        destination = []
-        dest=''
+     
         user_input= st.text_input("Please input user address." , key="g") #orgin 
         
         for location in StreetAd:
-            if counter > 24:
-                    
-                destination.append(dest)
-                dest=''
-                counter= 0
-                
-          
-            dest += location + '|'
-            counter +=1
-            
-           
             
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["value"]# duration
             my_dist2 = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]# duration
@@ -144,15 +123,7 @@ def Directions(file_uploaded):
                 break
 
            
-                 
-            
-        
-        
-            
-        st.write(counter)
-        st.write(destination)
- 
-
+          
 
 if __name__== "__main__":
 
