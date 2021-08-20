@@ -117,19 +117,20 @@ def Directions(file_uploaded):
             
             km = my_dist/1000
             
-            if my_dist <= 1000:
-                km = my_dist/1000
-                st.write("The nearest location(s) for within 1km:")
-                st.write(Comm," Address: ", location,", within:",my_dur)
-            if my_dist <= 10000:
-                st.write("The nearest location(s) for within 10km:")
-                st.write(Comm," Address: ", location,", within:",my_dur)
-            if my_dist <= 15000:
-                st.write("The nearest location(s) for within 15km:")
-                st.write(Comm," Address: ", location,", within:",my_dur)
-            else:
-                st.write("The only available location(s) are:")
-                st.write(Comm," Address: ", location,", within:",my_dur)
+        if my_dist <= 1000:
+            km = my_dist/1000
+            st.write("The nearest location(s) for within 1km:")
+            st.write(Comm," Address: ", location,", within:",my_dur)
+        if my_dist <= 10000:
+            st.write("The nearest location(s) for within 10km:")
+            st.write(Comm," Address: ", location,", within:",my_dur)
+        if my_dist <= 15000:
+            st.write("The nearest location(s) for within 15km:")
+            st.write(Comm," Address: ", location,", within:",my_dur)
+        else:
+            st.write("The only available location(s) are:")
+            st.write(Comm," Address: ", location,", within:",my_dur)
+                
                 
                
         
