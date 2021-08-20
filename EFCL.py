@@ -140,28 +140,7 @@ def Directions(file_uploaded):
             
         st.write(counter)
         st.write(destination)
-        
-'''
-                        small_distance=[]
-                        time= []
-                        for dest_string in destination:
-                                my_dist = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["text"]
-                                #my_dist2 = gmaps.distance_matrix(user_input,dest_string )['rows'][0]['elements'][0]["distance"]["value"] 
-                                my_dur = gmaps.distance_matrix(user_input, dest_string )['rows'][0]['elements'][0]["duration"]["text"] #duration
-                                small_distance.append(my_dist)
-                                time.append(my_dur)
-
-        
-                        for i in range(len(small_distance)):
-
-                                results.append(d, small_distance[i], time[i])
-        
-        '''
-        #results_df = pd.DataFrame(results, columns=['destination', 'driving distance [km]', 'driving time [s]'])
-
-
-        #st.table(results_df)
-
+ 
 
 
 if __name__== "__main__":
