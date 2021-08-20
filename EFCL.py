@@ -103,6 +103,7 @@ def Directions(file_uploaded):
         counter = 0  
         destination = []
         dest=''
+        user_input= st.text_input("Please input user address." , key="g") #orgin 
         for location in StreetAd:
             if counter > 24:
                     
@@ -113,7 +114,7 @@ def Directions(file_uploaded):
           
             dest += location + '|'
             counter +=1
-            user_input= st.text_input("Please input user address." , key="g") #orgin 
+           
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
             st.write('Distace: ',my_dist,'\n','Time: ', my_dur)
