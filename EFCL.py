@@ -109,9 +109,19 @@ def Directions(file_uploaded):
                 destination.append(dest)
                 dest=''
                 counter= 0
-
+                
+          
             dest += location + '|'
-            #destination.append(dest)
+            counter +=1
+            
+         for location2 in StreetAd:
+            if counter <= 24:
+                    
+                destination.append(dest)
+                dest=''
+                counter= 0
+
+            dest += location2 + '|'
             counter +=1
         #st.write(counter)
         st.write(destination)
