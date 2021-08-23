@@ -11,7 +11,7 @@ import googlemaps
 st.write("Please upload your csv file, then select topic you want to search by.")
 title_container = st.beta_container()
 col1,mid, col2 = st.beta_columns([1,1,20])
-image = Image.open('efcl logi.PNG')
+image = Image.open('efcl.PNG')
 with title_container:
     with col1:
         st.image(image, width=64)
