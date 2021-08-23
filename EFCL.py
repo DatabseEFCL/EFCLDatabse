@@ -13,10 +13,11 @@ title_container = st.beta_container()
 col1, col2 = st.beta_columns([1,20])
 image = Image.open('efcl.png')
 with title_container:
-    with col2:
-        st.image(image, width=64)
+   
     with col1:
       st.title("EFCL CLOG Database Application")
+    with col2:
+        st.image(image, width=64)
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
 
