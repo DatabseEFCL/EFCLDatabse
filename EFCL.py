@@ -8,7 +8,7 @@ import googlemaps
 
 #title and subheader
 
-st.write("Please upload your csv file, then select topic you want to search by.")
+#st.write("Please upload your csv file, then select topic you want to search by.")
 title_container = st.beta_container()
 col1, col2 = st.beta_columns([1,1])
 image = Image.open('efcl.png')
