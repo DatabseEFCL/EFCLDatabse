@@ -72,7 +72,10 @@ def database():
         if Qst == "Address":#outout if the selected field is Address 
                         Directions(file_uploaded)
                 
-        if file_uploaded is None:
+        else:
+         
+         if file_uploaded is None:
+            
             st.write("There is no uploaded file")
          
          
