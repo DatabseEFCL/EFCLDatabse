@@ -1,14 +1,23 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 import googlemaps
 
 
 
 
 #title and subheader
-st.title("EFCL CLOG Database Application")
+#st.title("EFCL CLOG Database Application")
 st.write("Please upload your csv file, then select topic you want to search by.")
-
+title_container = st.beta_container()
+col1,mid, col2 = st.beta_columns([1,1,20])
+image = Image.open('EFCLDatabse/efcl logi.png')
+with title_container:
+    with col1:
+        st.image(image, width=64)
+    with col2:
+        st.markdown('<h1 style="color: green;">EFCL CLOG Database Application</h1>',
+                    unsafe_allow_html=True)
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
 
@@ -75,29 +84,29 @@ def Directions(file_uploaded):
         #csv file 
         df= loadData(file_uploaded)
         
-        # Requires API key
-        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4')
+        # API key
+        gmaps = googlemaps.Client(key='AIzaSyAG23fb_Mhco1Xvlft4uhCqbU8h-d5-7w4') 
 
         
         Program2 = df["Program"].drop_duplicates().sort_values()
 
 
-        Program= st.selectbox("Select your desired program:", list(Program2),key='z')
+        Program= st.selectbox("Select your desired program:", list(Program2),key='z') #select program
 
         StreetAd= df["Address"].loc[df['Program']== Program] #filters the addresses of programs that equal the selected program
        
       
         
-        user_input= st.text_input("Please input user address." , key="g") #orgin 
+        user_input= st.text_input("Please input user address." , key="g") # orgin address
 
         
-        for location in StreetAd:
+        for location in StreetAd: #iterates through the addresses in that are filtered depeneding on the selected Program
             
             my_dist = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["value"]# duration
             my_dist2 = gmaps.distance_matrix(user_input,location )['rows'][0]['elements'][0]["distance"]["text"]# duration
             my_dur = gmaps.distance_matrix(user_input, location )['rows'][0]['elements'][0]["duration"]["text"] #duration
 
-            if my_dist <= 500:
+            if my_dist <= 500: # if the distance is less than 0.5 km, display the community league
                 
                  Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location within 0.5 km:")
@@ -108,7 +117,7 @@ def Directions(file_uploaded):
                  st.write(" Distance: ", my_dist2)
                  break
             
-            if my_dist <= 1000:
+            if my_dist <= 1000: # if the distance is less than 1 km, display the community league
                 
                  Comm= df["Community League"].loc[df['Address']== location].drop_duplicates() #finds the community leagues of the filtered addresses
                  st.write("The nearest location within 1 km:")
@@ -119,7 +128,7 @@ def Directions(file_uploaded):
                  st.write(" Distance: ", my_dist2)
                  break
 
-            if my_dist <= 10000:
+            if my_dist <= 10000: # if the distance is less than 10 km, display the community league
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location within 10 km:")
 
@@ -129,7 +138,7 @@ def Directions(file_uploaded):
 
                 break 
 
-            if my_dist <= 15000:
+            if my_dist <= 15000: # if the distance is less than 15 km, display the community league
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
                 st.write("The nearest location within 15 km:")
                 
