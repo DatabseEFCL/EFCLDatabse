@@ -10,7 +10,7 @@ import googlemaps
 
 #st.write("Please upload your csv file, then select topic you want to search by.")
 title_container = st.beta_container()
-col1, col2 = st.beta_columns([20,50])
+col1, col2 = st.beta_columns([20,10])
 image = Image.open('efcl.png')
 with title_container:
    
