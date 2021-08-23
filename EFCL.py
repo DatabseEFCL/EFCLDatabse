@@ -42,9 +42,7 @@ def database():
         global Qst 
         global df
          
-         
-        if file_uploaded is None:
-         st.write("There is no uploaded file")
+ 
 
         if file_uploaded is not None:
            
