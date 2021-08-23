@@ -132,7 +132,7 @@ def Directions(file_uploaded):
 
             if my_dist <= 15000:
                 Comm= df["Community League"].loc[df['Address']== location].drop_duplicates()
-                st.write("The nearest locationwithin 15 km:")
+                st.write("The nearest location within 15 km:")
                 
                 st.write(Comm," Address: ", location)
                 st.write("Duration:",my_dur)
