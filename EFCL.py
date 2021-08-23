@@ -26,6 +26,7 @@ st.sidebar.subheader("Visualization Settings")
 #chaching/saving CLOG data
 @st.cache(suppress_st_warning=True,allow_output_mutation=True)
 def loadData(file_uploaded):
+    st.write("There is no uploaded file")
 
     st.write("Your file has been uploaded !")
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
@@ -40,6 +41,10 @@ def database():
         #function to view the databse
         global Qst 
         global df
+         
+         
+        if file_uploaded is None:
+         st.write("There is no uploaded file")
 
         if file_uploaded is not None:
            
@@ -72,11 +77,8 @@ def database():
         if Qst == "Address":#outout if the selected field is Address 
                         Directions(file_uploaded)
                 
-        else:
+        
          
-         if file_uploaded is None:
-            
-            st.write("There is no uploaded file")
          
          
          
