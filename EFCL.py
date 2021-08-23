@@ -13,7 +13,7 @@ image = Image.open('efcl.png')
 with title_container:
    
     with col1:
-      st.title("EFCL CLOG Application")
+      st.title("CLOG Application")
     with col2:
         st.image(image, width=64)
          
