@@ -28,9 +28,6 @@ st.sidebar.subheader("Visualization Settings")
 def loadData(file_uploaded):
 
     st.write("Your file has been uploaded !")
-    st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
-    
-    
     df = pd.read_csv(file_uploaded, encoding='unicode_escape')
     
     return df
@@ -48,7 +45,6 @@ def database():
            
             df= loadData(file_uploaded)
             st.write("Your file has been uploaded !")
-            st.write("CAUTION: DO NOT select the option 'nan', it will cause a bug and you will have to refreash the page and insert the csv file again.")
             Qst= st.selectbox("Choose the field you want to search by:",list(df.head()),key = "1")
             
         if Qst == "Community League": #outout if the selected field is community league
@@ -76,10 +72,11 @@ def database():
         if Qst == "Address":#outout if the selected field is Address 
                         Directions(file_uploaded)
                 
-        else:
-                st.write("There is no file uploaded.")
-        
-
+        if file_uploaded is None:
+            st.write("There is no uploaded file")
+         
+         
+         
 def Directions(file_uploaded):
 
         #csv file 
