@@ -7,8 +7,6 @@ import googlemaps
 
 
 #title and subheader
-
-#st.write("Please upload your csv file, then select topic you want to search by.")
 title_container = st.beta_container()
 col1, col2 = st.beta_columns([20,5])
 image = Image.open('efcl.png')
@@ -18,6 +16,9 @@ with title_container:
       st.title("EFCL CLOG Database Application")
     with col2:
         st.image(image, width=64)
+         
+st.write("Please upload your csv file, then select topic you want to search by.")
+
 #Sidebar
 st.sidebar.subheader("Visualization Settings")
 
